@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Kupovina"
+             x:Class="travelAworld.MobileApp.Views.KupiPonudu">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Grid BackgroundColor="WhiteSmoke">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Padding="10">
+                    <Entry x:Name="brojKartice" Placeholder="Broj kartice"/>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="0" Padding="10" Orientation="Horizontal">
+                    <Entry x:Name="mjesec" Placeholder="MM" WidthRequest="70"/>
+                    <Entry x:Name="godina" Placeholder="GG" WidthRequest="70"/>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="1" Padding="10">
+                    <Entry x:Name="cvv" Placeholder="CVV"/>
+                </StackLayout>
+
+            </Grid>
+            
+            <Label Text="UKUPNO:"/>
+            <Label x:Name="cijena" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+            <Button Clicked="kupiPonudu" Text="Kupi ponudu" BackgroundColor="#FF2607" TextColor="White" HeightRequest="40"/>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

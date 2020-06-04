@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:travelAworld.Model;assembly=travelAworld.Model"
+             xmlns:vm1="clr-namespace:travelAworld.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="travelAworld.MobileApp.Views.RegisterPage">
+
+    <ContentPage.BindingContext>
+        <vm1:RegisterViewModel />
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Content>
+        <StackLayout Padding="5" VerticalOptions="CenterAndExpand">
+            <Image Source="logo3.png" HeightRequest="128"/>
+            <Label FontSize="Title" HorizontalTextAlignment="Center" Text="Registracija"/>
+            <Entry x:Name="Ime" Placeholder="Ime"/>
+            <Entry x:Name="Prezime" Placeholder="Prezime"/>
+            <Entry x:Name="Email" Placeholder="Email"/>
+            <Entry x:Name="Telefon" Placeholder="Telefon"/>
+            <Entry x:Name="Adresa" Placeholder="Adresa"/>
+            <DatePicker x:Name="Dob" MinimumDate="01/01/1900"
+            MaximumDate="12/31/2020" />
+            <Entry x:Name="Username" Placeholder="Username"/>
+            <Entry x:Name="Password" Placeholder="Password" IsPassword="True"/>
+            <Button Clicked="salji" Text="Registracija"/>
+            <!--<Button Command="{Binding RegisterCommand}" Text="Registracija"/>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

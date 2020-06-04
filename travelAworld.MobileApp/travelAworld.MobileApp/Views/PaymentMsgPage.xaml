@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Plaćanje"
+             x:Class="travelAworld.MobileApp.Views.PaymentMsgPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <!-- use a custom Markup Extension -->
+                <!--<Image Source="https://pluspng.com/img-png/success-png-success-icon-image-23194-400.png" Aspect="AspectFill"/>-->
+                <Image x:Name="slika" Aspect="AspectFill" HeightRequest="128" WidthRequest="128"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Label x:Name="responseTxt" Text="Success message" TextColor="Black" FontSize="Large"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

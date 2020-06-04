@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:travelAworld.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             Title="Ponude"
+             x:Class="travelAworld.MobileApp.Views.PonudePage">
+    <ContentPage.BindingContext>
+        <vm:PonudeViewModel />
+    </ContentPage.BindingContext>
+    
+
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar TextChanged="SearchBar_TextChanged"  Placeholder="Traži putovanja..."/>
+            <StackLayout Margin="20,0,20,0">
+                <ListView x:Name="listaPonuda" ItemsSource="{Binding Ponude}"
+                      ItemSelected="OnListViewItemSelected"
+                      HasUnevenRows="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Margin="20,35,20,20">
+                                    <Image Source="{Binding Slike[0]}" Aspect="AspectFill" HeightRequest="200" BackgroundColor="red"/>
+                                    <Label Text="{Binding Naslov}" TextColor="#39E0A3" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

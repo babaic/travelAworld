@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             Title="Naziv ponude"
+             x:Class="travelAworld.MobileApp.Views.TestPage">
+
+    <ScrollView InputTransparent="True">
+        <Frame CornerRadius="5" Margin="10,10,10,10">
+            <StackLayout BackgroundColor="AliceBlue" Padding="10">
+                <Label Text="Split - Dubrovnik" TextColor="#39E0A3" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <!--slika-->
+                <AbsoluteLayout>
+                    <CarouselView x:Name="nekaLista" IndicatorView="indicatorView" HeightRequest="260">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout HeightRequest="260">
+
+
+                                    <Image Source="{Binding ImageUrl}"
+                                           HeightRequest="250"
+                                           MinimumHeightRequest="250"
+                                           WidthRequest="500"
+                                           Aspect="AspectFill"
+                                           HorizontalOptions="Center" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+
+
+                    <IndicatorView x:Name="indicatorView"
+                   IndicatorColor="LightGray"
+                   SelectedIndicatorColor="DarkGray"
+                   AbsoluteLayout.LayoutBounds=".5,.98,100,25"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   HorizontalOptions="Center" />
+                </AbsoluteLayout>
+                <!--slika-->
+
+                <StackLayout>
+                    <Grid RowSpacing="0" Margin="10, 10, 10, 10">
+                        <Label Text="Cijena" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        <Label Text="450 KM" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Grid Margin="10, 10, 10, 10">
+                        <Label Text="Datum" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        <Label Text="10.01.2019 - 16.01.2019" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Grid Margin="10, 10, 10, 10">
+                        <Label Text="O destinaciji" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Grid Margin="10, 10, 10, 10">
+                        <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pulvinar commodo purus, et semper urna gravida et. Donec molestie nunc leo, euismod dapibus lacus faucibus vel. Integer efficitur metus non risus pretium molestie." TextColor="Black" HorizontalTextAlignment="Start"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Grid Margin="10, 10, 10, 10">
+                        <Label Text="Hotel" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        <Label Text="Randomtel *****" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End"/>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout HeightRequest="350">
+                    <Label Margin="10, 10, 10, 10" Text="Lokacija" FontAttributes="Bold" TextColor="#39E0A3"/>
+                    <maps:Map x:Name="map"
+               IsShowingUser="True"
+               MinimumHeightRequest="350"
+               MoveToLastRegionOnLayoutChange="False">
+                        <x:Arguments>
+                            <maps:MapSpan>
+                                <x:Arguments>
+                                    <maps:Position>
+                                        <x:Arguments>
+                                            <x:Double>36.9628066</x:Double>
+                                            <x:Double>-122.0194722</x:Double>
+                                        </x:Arguments>
+                                    </maps:Position>
+                                    <x:Double>0.01</x:Double>
+                                    <x:Double>0.01</x:Double>
+                                </x:Arguments>
+                            </maps:MapSpan>
+                        </x:Arguments>
+                        <maps:Map.Pins>
+                            <maps:Pin Label="Santa Cruz"
+                       Address="The city with a boardwalk"
+                       Type="Place">
+                                <maps:Pin.Position>
+                                    <maps:Position>
+                                        <x:Arguments>
+                                            <x:Double>36.9628066</x:Double>
+                                            <x:Double>-122.0194722</x:Double>
+                                        </x:Arguments>
+                                    </maps:Position>
+                                </maps:Pin.Position>
+                            </maps:Pin>
+                        </maps:Map.Pins>
+                    </maps:Map>
+                </StackLayout>
+
+                <StackLayout>
+                    <Grid Margin="10, 10, 10, 10">
+                        <Label Text="Program putovanja" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Grid Margin="10, 10, 10, 10">
+                        <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pulvinar commodo purus, et semper urna gravida et. Donec molestie nunc leo, euismod dapibus lacus faucibus vel. Integer efficitur metus non risus pretium molestie." TextColor="Black" HorizontalTextAlignment="Start"/>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="White" Margin="0">
+                    <StackLayout>
+                        <Grid Margin="10, 10, 10, 10">
+                            <Label Text="Odaberi sobu" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout>
+                        <Grid Margin="10, 10, 10, 10">
+                            <Picker x:Name="odaberiSoba"
+                                Title="Izbor soba"
+                                TitleColor="Red">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Jednokrevetna</x:String>
+                                        <x:String>Dvokrevetna</x:String>
+                                        <x:String>Trokrevetna</x:String>
+                                        <x:String>Četverokrevetna</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout>
+                        <Grid Margin="10, 10, 10, 10">
+                            <Label Text="Broj osoba" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout>
+                        <Grid Margin="10, 10, 10, 10">
+                            <Picker x:Name="odaberiBrojOsoba"
+                                Title="Broj osoba"
+                                TitleColor="Red">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>1</x:String>
+                                        <x:String>2</x:String>
+                                        <x:String>3</x:String>
+                                        <x:String>4</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout>
+                        <Button Text="Rezerviši"
+                                WidthRequest="500"
+                                BackgroundColor="#39E0A3"
+                                TextColor="White"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="Center"
+                                 />
+                    </StackLayout> 
+                    
+                </StackLayout> 
+
+                
+
+
+
+
+            </StackLayout>
+        </Frame>
+
+
+    </ScrollView>
+
+
+
+</ContentPage>
