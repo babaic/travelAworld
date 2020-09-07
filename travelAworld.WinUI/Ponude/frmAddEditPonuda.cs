@@ -76,7 +76,7 @@ namespace travelAworld.WinUI.Ponude
             //edit
             if (id.HasValue)
             {
-                dropLokacija.Enabled = false;
+                //dropLokacija.Enabled = false;
 
                 ponudaEdit = await _getPonuda.GetById<PonudaToDisplay>(id);
                 txtIme.Text = ponudaEdit.Naslov;

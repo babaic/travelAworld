@@ -124,6 +124,14 @@ namespace travelAworld.WinUI
             }
         }
 
+        void Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+            // Application.Exit() tells your App to close itself
+            //Also if you want to be more aggressive, there is another option, you can  
+            //use, Environment.Exit(1), which will basically kill you process.
+        }
+
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -214,6 +222,7 @@ namespace travelAworld.WinUI
             this.Visible = false;
             frmLogin form2 = new frmLogin();
             form2.Show();
+            Environment.Exit(0);
         }
 
         private void btnNoviUposlenik_Click(object sender, EventArgs e)
@@ -240,5 +249,6 @@ namespace travelAworld.WinUI
         {
             openChildFormInPanel(new frmStatistika());
         }
+
     }
 }
