@@ -109,6 +109,7 @@
             this.dgvPonude.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPonude.Size = new System.Drawing.Size(1151, 554);
             this.dgvPonude.TabIndex = 0;
+            this.dgvPonude.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPonude_CellCClick);
             this.dgvPonude.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPonude_CellDoubleClick);
             // 
             // btnPrevious

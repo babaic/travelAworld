@@ -14,10 +14,17 @@ namespace travelAworld.WinUI.Ponude
     public partial class frmAddLokacija : Form
     {
         private readonly APIService _addLokacija = new APIService("ponuda/dodajlokaciju");
+        private readonly APIService _getDrzave = new APIService("ponuda/getdrzave");
 
         public frmAddLokacija()
         {
             InitializeComponent();
+
+            var drzave = _getDrzave.Get<List<LokacijaToDisplay>>(null);
+
+            dropDrzava.DisplayMember = "Drzava";
+            dropDrzava.ValueMember = "DrzavaId";
+            dropDrzava.DataSource = drzave;
         }
 
         private async void btnSaveForm_Click(object sender, EventArgs e)
@@ -25,7 +32,7 @@ namespace travelAworld.WinUI.Ponude
             LokacijaToAdd lokacija = new LokacijaToAdd
             {
                 Mjesto = txtMjesto.Text,
-                Drzava = txtDrzava.Text
+                Drzava = dropDrzava.Text,
             };
 
             await _addLokacija.Insert<dynamic>(lokacija);
