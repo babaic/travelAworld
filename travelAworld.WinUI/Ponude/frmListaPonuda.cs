@@ -69,9 +69,7 @@ namespace travelAworld.WinUI.Ponude
                 btnNext.Enabled = false;
             }
 
-           
             dgvPonude.DataSource = result.Items;
-            //hide from table
             dgvPonude.Columns["CijenaUkljuceno"].Visible = false;
             dgvPonude.Columns["CijenaIskljuceno"].Visible = false;
             dgvPonude.Columns["Opis"].Visible = false;
@@ -83,11 +81,7 @@ namespace travelAworld.WinUI.Ponude
             dgvPonude.Columns["_Mjesto"].Visible = false;
 
             dgvPonude.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
             dgvPonude.Columns["PonudaId"].HeaderText = "#ID";
-            dgvPonude.Columns["PonudaId"].Width = 40;
-            //dgvPonude.Columns["Naslov"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            //dgvPonude.Columns["Lokacija"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvPonude.Columns["DatumPolaska"].HeaderText = "Datum polaska";
             dgvPonude.Columns["DatumPovratka"].HeaderText = "Datum povratka";
         }
