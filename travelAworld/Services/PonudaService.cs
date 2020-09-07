@@ -134,9 +134,10 @@ namespace travelAworld.Services
             var drzave = _context.Drzava.Select(x => new LokacijaToDisplay
             {
                 Drzava = x.Naziv,
+                DrzavaId = x.Id,
                 LokacijaId = x.Id,
                 Mjesto = "null"
-            }).ToList();
+            }).OrderBy(x=>x.Drzava).ToList();
 
             return drzave;
         }

@@ -33,6 +33,16 @@ namespace travelAworld.WinUI.Ponude
 
             txtPageCounter.Text = 1.ToString();
 
+            DataGridViewButtonColumn bcol = new DataGridViewButtonColumn();
+            bcol.FlatStyle = FlatStyle.Flat;
+            bcol.DefaultCellStyle.BackColor = Color.FromArgb(28, 49, 58);
+            bcol.DefaultCellStyle.ForeColor = Color.White;
+            bcol.HeaderText = "";
+            bcol.Text = "Pregled";
+            bcol.Name = "btnClickMe";
+            bcol.UseColumnTextForButtonValue = true;
+            dgvPonude.Columns.Add(bcol);
+
         }
 
         private void frmListaPonuda_Load(object sender, EventArgs e)
@@ -84,6 +94,7 @@ namespace travelAworld.WinUI.Ponude
             dgvPonude.Columns["PonudaId"].HeaderText = "#ID";
             dgvPonude.Columns["DatumPolaska"].HeaderText = "Datum polaska";
             dgvPonude.Columns["DatumPovratka"].HeaderText = "Datum povratka";
+
         }
 
         private void drzavaChanged(object sender, EventArgs e)
@@ -103,9 +114,20 @@ namespace travelAworld.WinUI.Ponude
 
         private void dgvPonude_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var id = dgvPonude.SelectedRows[0].Cells[0].Value;
+            var id = dgvPonude.SelectedRows[0].Cells[1].Value;
             frmAddEditPonuda frm = new frmAddEditPonuda(Int32.Parse(id.ToString()));
             frm.Show();
+        }
+
+        private void dgvPonude_CellCClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                var id = dgvPonude.Rows[e.RowIndex].Cells[1].Value;
+                frmAddEditPonuda frm = new frmAddEditPonuda(Int32.Parse(id.ToString()));
+                frm.Show();
+            }
+
         }
     }
 }

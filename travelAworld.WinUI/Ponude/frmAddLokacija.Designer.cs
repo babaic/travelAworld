@@ -33,9 +33,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtMjesto = new System.Windows.Forms.TextBox();
             this.txtNaziv = new System.Windows.Forms.Label();
-            this.txtDrzava = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnSaveForm = new System.Windows.Forms.Button();
+            this.dropDrzava = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -92,23 +92,6 @@
             this.txtNaziv.TabIndex = 7;
             this.txtNaziv.Text = "Mjesto/Grad";
             // 
-            // txtDrzava
-            // 
-            this.txtDrzava.Location = new System.Drawing.Point(182, 142);
-            this.txtDrzava.Name = "txtDrzava";
-            this.txtDrzava.Size = new System.Drawing.Size(207, 22);
-            this.txtDrzava.TabIndex = 17;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label1.Location = new System.Drawing.Point(12, 140);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 22);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Država";
-            // 
             // btnSaveForm
             // 
             this.btnSaveForm.BackColor = System.Drawing.Color.Green;
@@ -123,14 +106,32 @@
             this.btnSaveForm.UseVisualStyleBackColor = false;
             this.btnSaveForm.Click += new System.EventHandler(this.btnSaveForm_Click);
             // 
+            // dropDrzava
+            // 
+            this.dropDrzava.FormattingEnabled = true;
+            this.dropDrzava.Location = new System.Drawing.Point(182, 136);
+            this.dropDrzava.Name = "dropDrzava";
+            this.dropDrzava.Size = new System.Drawing.Size(207, 24);
+            this.dropDrzava.TabIndex = 43;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.8F);
+            this.label2.Location = new System.Drawing.Point(12, 135);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 22);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Država";
+            // 
             // frmAddLokacija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dropDrzava);
             this.Controls.Add(this.btnSaveForm);
-            this.Controls.Add(this.txtDrzava);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtMjesto);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtNaziv);
@@ -152,8 +153,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtMjesto;
         private System.Windows.Forms.Label txtNaziv;
-        private System.Windows.Forms.TextBox txtDrzava;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSaveForm;
+        private System.Windows.Forms.ComboBox dropDrzava;
+        private System.Windows.Forms.Label label2;
     }
 }
