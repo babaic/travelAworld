@@ -44,7 +44,7 @@
             this.btnPosaljiObavijest = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pretragaDatum = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPrintaj = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -206,9 +206,9 @@
             this.btnPosaljiObavijest.FlatAppearance.BorderSize = 0;
             this.btnPosaljiObavijest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPosaljiObavijest.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnPosaljiObavijest.Location = new System.Drawing.Point(297, 83);
+            this.btnPosaljiObavijest.Location = new System.Drawing.Point(297, 74);
             this.btnPosaljiObavijest.Name = "btnPosaljiObavijest";
-            this.btnPosaljiObavijest.Size = new System.Drawing.Size(130, 23);
+            this.btnPosaljiObavijest.Size = new System.Drawing.Size(130, 38);
             this.btnPosaljiObavijest.TabIndex = 45;
             this.btnPosaljiObavijest.Text = "Pošalji obavijest";
             this.btnPosaljiObavijest.UseVisualStyleBackColor = false;
@@ -232,25 +232,26 @@
             this.pretragaDatum.TabIndex = 46;
             this.pretragaDatum.ValueChanged += new System.EventHandler(this.datumChanged);
             // 
-            // button1
+            // btnPrintaj
             // 
-            this.button1.BackColor = System.Drawing.Color.Green;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(1100, 84);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 23);
-            this.button1.TabIndex = 48;
-            this.button1.Text = "Isprintaj";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnPrintaj.BackColor = System.Drawing.Color.Green;
+            this.btnPrintaj.FlatAppearance.BorderSize = 0;
+            this.btnPrintaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrintaj.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnPrintaj.Location = new System.Drawing.Point(1082, 76);
+            this.btnPrintaj.Name = "btnPrintaj";
+            this.btnPrintaj.Size = new System.Drawing.Size(84, 37);
+            this.btnPrintaj.TabIndex = 48;
+            this.btnPrintaj.Text = "Isprintaj";
+            this.btnPrintaj.UseVisualStyleBackColor = false;
+            this.btnPrintaj.Click += new System.EventHandler(this.btnPrintaj_Click);
             // 
             // frmListaRezervacija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 762);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnPrintaj);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pretragaDatum);
             this.Controls.Add(this.btnPosaljiObavijest);
@@ -296,6 +297,6 @@
         private System.Windows.Forms.Button btnPosaljiObavijest;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker pretragaDatum;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPrintaj;
     }
 }
