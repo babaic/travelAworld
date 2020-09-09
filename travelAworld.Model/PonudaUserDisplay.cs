@@ -9,6 +9,7 @@ namespace travelAworld.Model
         public int Id { get; set; }
         public int PonudaId { get; set; }
         public string NazivPonuda { get; set; }
+        public DateTime DatumPolaska { get; set; }
         public string ImePrezime { get; set; }
         public double Cijena { get; set; }
         public string TransakcijaId { get; set; }

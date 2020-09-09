@@ -56,6 +56,7 @@ namespace travelAworld.WinUI.Rezervacije
             PonudaUserToSearch queryParams = new PonudaUserToSearch
             {
                 PonudaId = Int32.Parse(pretragaPonuda.SelectedValue.ToString()),
+                Datum = pretragaDatum.Value,
                 PageNumber = Int32.Parse(txtPageCounter.Text)
             };
 
@@ -121,6 +122,11 @@ namespace travelAworld.WinUI.Rezervacije
         }
 
         private void pretragaPonuda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pretragaRezervacija(sender, e);
+        }
+
+        private void datumChanged(object sender, EventArgs e)
         {
             pretragaRezervacija(sender, e);
         }

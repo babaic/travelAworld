@@ -253,19 +253,6 @@ namespace travelAworld.Services
             {
                 query = query.Where(x => x.DatumPolaska.Month == queryParams.Datum.Month && x.DatumPolaska.Year == queryParams.Datum.Year);
             }
-            queryParams.UserToCheckId = 104;
-            if(queryParams.UserToCheckId != 0)
-            {
-                //get ponude id for selected user
-                List<int> usersPonudeIds = new List<int>();
-                var resultPonudeForUser = _context.PonudaUser.Where(x => x.UserId == queryParams.UserToCheckId).ToList();
-                foreach(var ponuda in resultPonudeForUser)
-                {
-                    usersPonudeIds.Add(ponuda.PonudaId);
-                }
-                query = query.Where(t => usersPonudeIds.Contains(t.PonudaId));
-                //
-            }
             // pretraga klijenta iz aplikacije
             if (!string.IsNullOrEmpty(queryParams.Naziv))
             {
@@ -337,9 +324,12 @@ namespace travelAworld.Services
                     VrijemePlacanja = x.VrijemePlacanja,
                     PonudaId = x.PonudaId,
                     TransakcijaId = x.TransakcijaId,
-                    Telefon = x.User.PhoneNumber
-                    
+                    Telefon = x.User.PhoneNumber,
+                    DatumPolaska = x.Ponuda.DatumPolaska,
                 }).OrderBy(x => x.PonudaId).ToList().AsQueryable();
+
+            //filter za mjesece rezervacije
+            query = query.Where(x => x.DatumPolaska.Year == queryParams.Datum.Year && x.DatumPolaska.Month == queryParams.Datum.Month);
 
             if (queryParams.PonudaId != 0)
             {
