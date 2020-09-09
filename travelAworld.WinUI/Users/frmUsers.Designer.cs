@@ -76,6 +76,7 @@
             this.dgvUsers.RowTemplate.Height = 24;
             this.dgvUsers.Size = new System.Drawing.Size(1151, 554);
             this.dgvUsers.TabIndex = 0;
+            this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsersCellContentClick);
             // 
             // btnPrikazi
             // 

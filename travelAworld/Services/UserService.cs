@@ -17,6 +17,23 @@ namespace travelAworld.Services
             _context = context;
         }
 
+        public List<PutovanjeRezervacijaToDisplay> GetPutovanjeAndRezervacijeFromUser(SearchUser userId)
+        {
+            var result = _context.PonudaUser.Include(c => c.Ponuda).Where(c => c.UserId == userId.Id).OrderByDescending(c => c.Id).Select(x => new PutovanjeRezervacijaToDisplay
+            {
+                PonudaId = x.PonudaId,
+                Cijena = x.Ponuda.Cijena,
+                DatumPolaska = x.Ponuda.DatumPolaska,
+                DatumPovratka = x.Ponuda.DatumPovratka,
+                Hotel = x.Ponuda.Hotel,
+                Lokacija = _context.Lokacija.Include(c => c.Drzava).Where(c => c.Id == x.Ponuda.LokacijaId).Select(c => c.Naziv + " (" + c.Drzava.Naziv + ")").FirstOrDefault(),
+                Naslov = x.Ponuda.Naslov,
+                rezervacijaId = x.Id
+            }).ToList();
+
+            return result;
+        }
+
         public RezervacijaInfo GetRezervacijaInfo(int ponudaUserId)
         {
             var result = _context.PonudaUser.Where(x => x.Id == ponudaUserId).Include(x => x.User).Include(x => x.Ponuda).Select(x => new RezervacijaInfo

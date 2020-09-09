@@ -253,6 +253,19 @@ namespace travelAworld.Services
             {
                 query = query.Where(x => x.DatumPolaska.Month == queryParams.Datum.Month && x.DatumPolaska.Year == queryParams.Datum.Year);
             }
+            queryParams.UserToCheckId = 104;
+            if(queryParams.UserToCheckId != 0)
+            {
+                //get ponude id for selected user
+                List<int> usersPonudeIds = new List<int>();
+                var resultPonudeForUser = _context.PonudaUser.Where(x => x.UserId == queryParams.UserToCheckId).ToList();
+                foreach(var ponuda in resultPonudeForUser)
+                {
+                    usersPonudeIds.Add(ponuda.PonudaId);
+                }
+                query = query.Where(t => usersPonudeIds.Contains(t.PonudaId));
+                //
+            }
             // pretraga klijenta iz aplikacije
             if (!string.IsNullOrEmpty(queryParams.Naziv))
             {

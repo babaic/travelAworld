@@ -13,5 +13,6 @@ namespace travelAworld.Services
         Task UpdateRole(int userId, string roleName);
         RezervacijaInfo GetRezervacijaInfo(int ponudaUserId);
         List<UsertoDisplay> GetUsersFromTrip(int ponudaId);
+        List<PutovanjeRezervacijaToDisplay> GetPutovanjeAndRezervacijeFromUser(SearchUser userId);
     }
 }

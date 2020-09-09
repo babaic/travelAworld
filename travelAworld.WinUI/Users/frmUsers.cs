@@ -21,6 +21,16 @@ namespace travelAworld.WinUI.Users
         {
             InitializeComponent();
             txtPageCounter.Text = 1.ToString();
+
+            DataGridViewButtonColumn bcol = new DataGridViewButtonColumn();
+            bcol.FlatStyle = FlatStyle.Flat;
+            bcol.DefaultCellStyle.BackColor = Color.FromArgb(28, 49, 58);
+            bcol.DefaultCellStyle.ForeColor = Color.White;
+            bcol.HeaderText = "Rezervacije";
+            bcol.Text = "Vidi putovanja";
+            bcol.Name = "btnClickMe";
+            bcol.UseColumnTextForButtonValue = true;
+            dgvUsers.Columns.Add(bcol);
         }
 
         private void frmUsers_Load(object sender, EventArgs e)
@@ -61,6 +71,7 @@ namespace travelAworld.WinUI.Users
             dgvUsers.Columns["Role"].Visible = false;
             dgvUsers.Columns["Email"].Visible = false;
             dgvUsers.Columns["DatumRodjenja"].Visible = false;
+
             dgvUsers.RowTemplate.Height = 100;
             for (int i = 0; i < dgvUsers.Columns.Count; i++)
             {
@@ -104,6 +115,16 @@ namespace travelAworld.WinUI.Users
         {
             txtPageCounter.Text = "1";
             this.pretragaKorisnika(sender, e);
+        }
+
+        private void dgvUsersCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                var userid = dgvUsers.Rows[e.RowIndex].Cells[1].Value;
+                frmUsersPonude frm = new frmUsersPonude(Int32.Parse(userid.ToString()));
+                frm.Show();
+            }
         }
     }
 }
