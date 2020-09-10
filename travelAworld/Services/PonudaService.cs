@@ -416,6 +416,33 @@ namespace travelAworld.Services
             }).ToList();
         }
 
+        public void OtkaziRezervaciju(int rezervacijaId)
+        {
+            var rezervacija = _context.PonudaUser.Include(x=>x.Ponuda).FirstOrDefault(x => x.Id == rezervacijaId);
+            rezervacija.IsCanceled = true;
+
+            var dispute = new OtkazanaPonudaUser
+            {
+                CijenaPonude = rezervacija.Ponuda.Cijena,
+                DatumOtkazivanja = DateTime.Now,
+                PonudaUserId = rezervacijaId,
+                StatusDisputa = Data.StatusDisputa.Aktivno,
+            };
+            _context.Add(dispute);
+            _context.SaveChanges();
+        }
+        public void DisputeUpdate(int id, DisputeToDisplay disputeToDisplay)
+        {
+            var dispute = _context.OtkazanaPonudaUser.FirstOrDefault(x => x.Id == id);
+            dispute.IznosPovrata = disputeToDisplay.IznosPovrata;
+            dispute.StatusDisputa = (Data.StatusDisputa) 1;
+            if(disputeToDisplay.StatusDisputa == Model.StatusDisputa.Zavrseno)
+            {
+                dispute.DatumZavrsetkaDisputa = DateTime.Now;
+            }
+            _context.SaveChanges();
+        }
+
         public void PonudaUserAdd(PonudaUserAdd ponudaUser)
         {
             var ponuda = new PonudaUser
@@ -506,6 +533,18 @@ namespace travelAworld.Services
 
             Helpers.CatchAction catchAction = new Helpers.CatchAction(_context);
             catchAction.SpasiAkciju(new HelperActionToSave { rMjesto = ponuda.Lokacija.Naziv, rDrzava = ponuda.Lokacija.Drzava.Naziv, UserId = userid });
+        }
+
+        public DisputeToDisplay GetDisputeInfo(int otkazanaPonudaId)
+        {
+            return _context.OtkazanaPonudaUser.Where(x => x.PonudaUserId == otkazanaPonudaId).Select(x=> new DisputeToDisplay
+            {
+                Id = x.Id,
+                IznosPovrata = x.IznosPovrata,
+                DatumZavrsetkaDisputa = x.DatumZavrsetkaDisputa != null ? x.DatumZavrsetkaDisputa.ToString() : "-",
+                DatumOtkazivanja = x.DatumOtkazivanja,
+                StatusDisputa = (Model.StatusDisputa) x.StatusDisputa,
+            }).FirstOrDefault();
         }
     }
 }
