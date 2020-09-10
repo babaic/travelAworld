@@ -17,5 +17,6 @@ namespace travelAworld.Data
         public DateTime VrijemePlacanja { get; set; }
         public string TipSobe { get; set; }
         public int BrojOsoba { get; set; }
+        public bool IsCanceled { get; set; } = false;
     }
 }

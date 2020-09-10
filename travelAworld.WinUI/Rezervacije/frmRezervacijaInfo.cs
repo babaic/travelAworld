@@ -14,7 +14,11 @@ namespace travelAworld.WinUI.Rezervacije
     public partial class frmRezervacijaInfo : Form
     {
         private readonly APIService _rezervacijaInfo = new APIService("user/getrezervacijainfo");
+        private readonly APIService _otkaziRezervaciju = new APIService("ponuda/otkaziRezervaciju");
+        private readonly APIService _updateDispute = new APIService("ponuda/DisputeUpdate");
+        private readonly APIService _getDisputeInfo = new APIService("ponuda/getdisputeid");
         private int _id;
+        private DisputeToDisplay disputeInfo;
         public frmRezervacijaInfo(int id)
         {
             InitializeComponent();
@@ -25,6 +29,7 @@ namespace travelAworld.WinUI.Rezervacije
 
         private async void loadData()
         {
+            disputeInfo = await _getDisputeInfo.GetById<DisputeToDisplay>(_id);
             var result = await _rezervacijaInfo.GetById<RezervacijaInfo>(_id);
             txtRezervacijaId.Text = "Rezervacija #" + _id;
             imePrezime.Text = result.User.Ime+" "+result.User.Prezime;
@@ -39,6 +44,34 @@ namespace travelAworld.WinUI.Rezervacije
             datumDo.Text = result.DatumDo.ToShortDateString();
             nazivPonude.Text = result.PonudaUser.NazivPonuda;
 
+            lblDatumZavrseno.Visible = false;
+
+            if (result.PonudaUser.IsCanceled)
+            {
+                lbl_otkazana_header.Visible = true;
+                panelInfoOtkazivanje.Visible = true;
+                btnOtkaziRezervaciju.Text = "OTKAZANO";
+                btnOtkaziRezervaciju.ForeColor = Color.White;
+                btnOtkaziRezervaciju.Enabled = false;
+
+                lblStatus.Text = disputeInfo.StatusDisputa == 0 ? "AKTIVAN" : "ZAVRŠENO";
+                txtIznosPovrata.Text = disputeInfo.IznosPovrata.ToString();
+                
+                if(disputeInfo.StatusDisputa == StatusDisputa.Zavrseno)
+                {
+                    txtIznosPovrata.Enabled = false;
+                    btnZavrsi.Text = "ZAVRŠENO";
+                    btnZavrsi.Enabled = false;
+                    lblStatus.ForeColor = Color.DarkRed;
+                    lblDatumZavrseno.Visible = true;
+                    lblDatumZavrseno.Text = disputeInfo.DatumZavrsetkaDisputa;
+                }
+            }
+            else
+            {
+                lbl_otkazana_header.Visible = false;
+                panelInfoOtkazivanje.Visible = false;
+            }
 
         }
 
@@ -69,6 +102,34 @@ namespace travelAworld.WinUI.Rezervacije
             printPreviewDialog1.PrintPreviewControl.Zoom = 1;
             printPreviewDialog1.ShowDialog();
             btnPrevious.Visible = true;
+        }
+
+        private async void btnOtkaziRezervaciju_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Jeste li sigurni da želite poništiti rezervaciju ? Rezervacija se više neće moći aktivirati!", "Poništavanje rezervacije", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                OtkaziRezervaciju rez = new OtkaziRezervaciju { RezervacijaId = _id };
+                await _otkaziRezervaciju.Insert<dynamic>(rez);
+                loadData();
+
+            }
+            else if (result == DialogResult.No)
+            {
+                //no...
+            }
+        }
+
+
+        private async void btnZavrsi_Click(object sender, EventArgs e)
+        {
+            var dispute = new DisputeToDisplay
+            {
+                StatusDisputa = StatusDisputa.Zavrseno,
+                IznosPovrata = Int32.Parse(txtIznosPovrata.Text),
+            };
+            await _updateDispute.Update<dynamic>(disputeInfo.Id, dispute);
+            loadData();
         }
     }
 }

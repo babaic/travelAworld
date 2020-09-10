@@ -53,6 +53,7 @@ namespace travelAworld.Services
                     VrijemePlacanja = x.VrijemePlacanja,
                     NazivPonuda = x.Ponuda.Naslov,
                     Cijena = x.Cijena,
+                    IsCanceled = x.IsCanceled
                 },
                 DatumOd = x.Ponuda.DatumPolaska,
                 DatumDo = x.Ponuda.DatumPovratka

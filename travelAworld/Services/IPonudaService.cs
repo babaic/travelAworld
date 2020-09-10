@@ -26,5 +26,8 @@ namespace travelAworld.Services
         void ZabiljeziPosjetu(int ponudaid, int userid);
         List<PonudaToDisplay> GetPreporuke(int userId);
         Statistika PopularnaPutovanja();
+        void OtkaziRezervaciju(int rezervacijaId);
+        void DisputeUpdate(int id, DisputeToDisplay disputeToDisplay);
+        DisputeToDisplay GetDisputeInfo(int otkazanaPonudaId);
     }
 }

@@ -144,5 +144,29 @@ namespace travelAworld.Controllers
             return Ok(_ponudaService.PopularnaPutovanja());
         }
 
+        [AllowAnonymous]
+        [HttpPost("otkaziRezervaciju")]
+        public IActionResult OtkaziRezervaciju(OtkaziRezervaciju rez)
+        {
+            _ponudaService.OtkaziRezervaciju(rez.RezervacijaId);
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [HttpGet("getdisputeid/{id}")]
+        public IActionResult GetDisputeId(int id)
+        {
+            return Ok(_ponudaService.GetDisputeInfo(id));
+        }
+
+        [AllowAnonymous]
+        [HttpPut("DisputeUpdate/{id}")]
+        public IActionResult DisputeUpdate(int id, DisputeToDisplay disputeToDisplay)
+        {
+            //disputeToDisplay.IznosPovrata = 120;
+            _ponudaService.DisputeUpdate(id, disputeToDisplay);
+            return Ok();
+        }
+
     }
 }

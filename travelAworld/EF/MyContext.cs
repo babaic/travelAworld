@@ -55,6 +55,6 @@ namespace travelAworld.EF
         public DbSet<PonudaUser> PonudaUser { get; set; }
         public DbSet<Obavijesti> Obavijesti { get; set; }
         public DbSet<UserSearch> UserSearch { get; set; }
-
+        public DbSet<OtkazanaPonudaUser> OtkazanaPonudaUser { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace travelAworld.Model
         public string Jmbg { get; set; }
         public string DatumRodjenja { get; set; }
         public string Telefon { get; set; }
+        public bool IsCanceled { get; set; }
 
     }
 }
