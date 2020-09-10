@@ -19,7 +19,7 @@ namespace travelAworld.Controllers
             _ponudaService = ponudaService;
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost("dodajponudu")]
         public IActionResult DodajPonudu(PonudaToAdd novaPonuda)
         {
@@ -28,28 +28,28 @@ namespace travelAworld.Controllers
             return Ok(ponuda);
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("getvodici")]
         public IActionResult GetVodici()
         {
             return Ok(_ponudaService.GetVodici());
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("getlokacija")]
         public IActionResult GetLokacija()
         {
             return Ok(_ponudaService.GetLokacija());
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost("dodajlokaciju")]
         public IActionResult Dodajlokaciju(LokacijaToAdd lokacijaToAdd)
         {
             return Ok(_ponudaService.DodajLokaciju(lokacijaToAdd));
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPut("updateponuda/{id}")]
         public IActionResult UpdatePonuda(int id, PonudaToAdd ponudaToUpdate)
         {
@@ -74,14 +74,14 @@ namespace travelAworld.Controllers
             return Ok(_ponudaService.GetPonudaById(id, userid));
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("getdrzave")]
         public IActionResult GetDrzave()
         {
             return Ok(_ponudaService.GetDrzave());
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost("ponudauser")]
         public IActionResult PonudaUser(PonudaUserAdd ponudaUser)
         {
@@ -89,7 +89,7 @@ namespace travelAworld.Controllers
             return Ok();
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("getponudeusers")]
         public IActionResult GetPonudeUsers([FromQuery]PonudaUserToSearch queryParams)
         {
@@ -104,7 +104,7 @@ namespace travelAworld.Controllers
             return Ok();
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("getobavijesti")]
         public IActionResult GetObavijesti([FromQuery]ObavijestToSearch queryParams)
         {
@@ -114,7 +114,7 @@ namespace travelAworld.Controllers
             return Ok(_ponudaService.GetObavijest(queryParams));
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("GetAktivnaPutovanja")]
         public IActionResult GetAktivnaPutovanja([FromQuery] AktivnaPutovanjaPretraga query)
         {
