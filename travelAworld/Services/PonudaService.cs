@@ -250,6 +250,10 @@ namespace travelAworld.Services
             {
                 query = query.Where(x => x.IsActive == false);
             }
+            else
+            {
+                query = query.Where(x => x.IsActive);
+            }
 
             if (queryParams.LokacijaId != 0)
             {
