@@ -44,6 +44,8 @@
             this.pretragaDatum = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.btnPretragaPonisti = new System.Windows.Forms.Button();
+            this.checkPrikaziIzbrisane = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -230,11 +232,33 @@
             this.btnPretragaPonisti.UseVisualStyleBackColor = false;
             this.btnPretragaPonisti.Click += new System.EventHandler(this.btnPretragaPonisti_Click);
             // 
+            // checkPrikaziIzbrisane
+            // 
+            this.checkPrikaziIzbrisane.AutoSize = true;
+            this.checkPrikaziIzbrisane.Location = new System.Drawing.Point(1048, 101);
+            this.checkPrikaziIzbrisane.Name = "checkPrikaziIzbrisane";
+            this.checkPrikaziIzbrisane.Size = new System.Drawing.Size(18, 17);
+            this.checkPrikaziIzbrisane.TabIndex = 39;
+            this.checkPrikaziIzbrisane.UseVisualStyleBackColor = true;
+            this.checkPrikaziIzbrisane.CheckedChanged += new System.EventHandler(this.ObrisaneShowHide);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 10.8F);
+            this.label6.Location = new System.Drawing.Point(884, 96);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(146, 22);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "Prikaži izbrisane";
+            // 
             // frmListaPonuda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 762);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.checkPrikaziIzbrisane);
             this.Controls.Add(this.btnPretragaPonisti);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pretragaDatum);
@@ -280,5 +304,7 @@
         private System.Windows.Forms.DateTimePicker pretragaDatum;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnPretragaPonisti;
+        private System.Windows.Forms.CheckBox checkPrikaziIzbrisane;
+        private System.Windows.Forms.Label label6;
     }
 }

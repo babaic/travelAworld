@@ -16,6 +16,7 @@ namespace travelAworld.WinUI.Ponude
         private readonly APIService _getPonuda = new APIService("ponuda/getponude");
         private readonly APIService _getDrzave = new APIService("ponuda/getdrzave");
         private int index = 0;
+        bool prikaziObrisanePonude = false;
         public frmListaPonuda()
         {
             InitializeComponent();
@@ -57,7 +58,8 @@ namespace travelAworld.WinUI.Ponude
             {
                LokacijaId = Int32.Parse(pretragaDrzava.SelectedValue.ToString()),
                Datum = pretragaDatum.Value,
-               PageNumber = Int32.Parse(txtPageCounter.Text)
+               PageNumber = Int32.Parse(txtPageCounter.Text),
+               PrikaziObrisane = prikaziObrisanePonude
             };
 
             var result = _getPonuda.Get<PageResult<PonudaToDisplay>>(queryParams);
@@ -89,7 +91,7 @@ namespace travelAworld.WinUI.Ponude
             dgvPonude.Columns["Koordinate2"].Visible = false;
             dgvPonude.Columns["_Drzava"].Visible = false;
             dgvPonude.Columns["_Mjesto"].Visible = false;
-
+            dgvPonude.Columns["isActive"].Visible = false;
             dgvPonude.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPonude.Columns["PonudaId"].HeaderText = "#ID";
             dgvPonude.Columns["DatumPolaska"].HeaderText = "Datum polaska";
@@ -128,6 +130,19 @@ namespace travelAworld.WinUI.Ponude
                 frm.Show();
             }
 
+        }
+
+        private void ObrisaneShowHide(object sender, EventArgs e)
+        {
+            if (checkPrikaziIzbrisane.Checked)
+            {
+                prikaziObrisanePonude = true;
+            }
+            else
+            {
+                prikaziObrisanePonude = false;
+            }
+            pretragaPonuda(sender, e);
         }
     }
 }

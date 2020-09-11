@@ -236,6 +236,7 @@ namespace travelAworld.Services
                 Koordinate2 = x.Koordinata2,
                 _Drzava = x.Lokacija.Drzava.Naziv,
                 _Mjesto = x.Lokacija.Naziv,
+                IsActive = x.IsActive,
                 Slike = _context.PonudaSlike.Where(s => s.PonudaId == x.Id).Select(s => s.SlikaUrl).ToList(),
                 Vodic = _context.VodicPonuda.Include(b => b.Vodic).Where(b => b.PonudaId == x.Id).Select(b => new UsertoDisplay
                 {
@@ -244,6 +245,11 @@ namespace travelAworld.Services
                     Username = b.Vodic.Ime + " " + b.Vodic.Prezime
                 }).ToList()
             }).AsQueryable();
+
+            if(queryParams.PrikaziObrisane == true)
+            {
+                query = query.Where(x => x.IsActive == false);
+            }
 
             if (queryParams.LokacijaId != 0)
             {

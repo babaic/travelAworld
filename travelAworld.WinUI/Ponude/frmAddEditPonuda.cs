@@ -85,6 +85,7 @@ namespace travelAworld.WinUI.Ponude
                 if (!ponudaEdit.IsActive)
                 {
                     btnBrisiPonudu.Enabled = false;
+                    btnSaveForm.Enabled = false;
                     lblObrisano.Visible = true;
                 }
 

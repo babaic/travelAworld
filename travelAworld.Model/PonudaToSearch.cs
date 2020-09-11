@@ -18,6 +18,7 @@ namespace travelAworld.Model
         public DateTime Datum { get; set; } = new DateTime(1990, 12, 10);
         public string Naziv { get; set; }
         public int UserToCheckId { get; set; } = 0;
+        public bool PrikaziObrisane { get; set; }
     }
 }
 
