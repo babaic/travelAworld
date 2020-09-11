@@ -19,6 +19,7 @@ namespace travelAworld.WinUI.Ponude
         private readonly APIService _getPonuda = new APIService("ponuda/getponuda");
         private readonly APIService _getVodici = new APIService("ponuda/getvodici");
         private readonly APIService _obavijest = new APIService("ponuda/dodajobavijest");
+        private readonly APIService _otkaziPonudu = new APIService("ponuda/otkaziponudu");
         bool locationAdded = false; //prevent loading x times same data
         PonudaToDisplay ponudaEdit;
 
@@ -77,8 +78,16 @@ namespace travelAworld.WinUI.Ponude
             if (id.HasValue)
             {
                 //dropLokacija.Enabled = false;
+                panelBrisiPonudu.Visible = true;
 
                 ponudaEdit = await _getPonuda.GetById<PonudaToDisplay>(id);
+
+                if (!ponudaEdit.IsActive)
+                {
+                    btnBrisiPonudu.Enabled = false;
+                    lblObrisano.Visible = true;
+                }
+
                 txtIme.Text = ponudaEdit.Naslov;
                 rtxtOpis.Text = ponudaEdit.Opis;
                 dateDatumPolaska.Value = ponudaEdit.DatumPolaska;
@@ -341,6 +350,19 @@ namespace travelAworld.WinUI.Ponude
             displayImage(thumb6, img6);
         }
 
-        
+        private async void btnBrisiPonudu_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Jeste li sigurni da želite obrisati ponudu ? Poništit ćete sve rezervacije!", "Brisanje ponude", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                await _otkaziPonudu.Insert<dynamic>(new OtkaziPonudu { Id = id.Value });
+                loadData();
+
+            }
+            else if (result == DialogResult.No)
+            {
+                //no...
+            }
+        }
     }
 }

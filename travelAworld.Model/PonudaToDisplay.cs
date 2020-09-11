@@ -25,6 +25,7 @@ namespace travelAworld.Model
         public string Koordinate2 { get; set; }
         public string _Drzava { get; set; }
         public string _Mjesto { get; set; }
+        public bool IsActive { get; set; }
 
 
         public string setDatumOdDo()

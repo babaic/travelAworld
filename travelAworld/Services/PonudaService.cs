@@ -296,6 +296,7 @@ namespace travelAworld.Services
                 Koordinate2 = x.Koordinata2,
                 _Mjesto = x.Lokacija.Naziv,
                 _Drzava = x.Lokacija.Drzava.Naziv,
+                IsActive = x.IsActive,
                 Slike = _context.PonudaSlike.Where(s => s.PonudaId == id).Select(s => s.SlikaUrl).ToList(),
                 Vodic = _context.VodicPonuda.Include(b => b.Vodic).Where(b => b.PonudaId == x.Id).Select(b => new UsertoDisplay
                 {
@@ -545,6 +546,28 @@ namespace travelAworld.Services
                 DatumOtkazivanja = x.DatumOtkazivanja,
                 StatusDisputa = (Model.StatusDisputa) x.StatusDisputa,
             }).FirstOrDefault();
+        }
+
+        public void OtkaziPonudu(int ponudaId)
+        {
+            var ponuda = _context.Ponuda.Where(x => x.Id == ponudaId).FirstOrDefault();
+            ponuda.IsActive = false;
+
+            var rezervacije = _context.PonudaUser.Where(x => x.PonudaId == ponudaId).ToList();
+
+            foreach(var rezervacija in rezervacije)
+            {
+                rezervacija.IsCanceled = true;
+                var otkazanaPonudaUser = new OtkazanaPonudaUser
+                {
+                    CijenaPonude = rezervacija.Cijena,
+                    DatumOtkazivanja = DateTime.Now,
+                    PonudaUserId = rezervacija.Id,
+                    StatusDisputa = Data.StatusDisputa.Aktivno
+                };
+                _context.Add(otkazanaPonudaUser);
+            }
+            _context.SaveChanges();
         }
     }
 }

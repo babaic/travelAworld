@@ -153,6 +153,14 @@ namespace travelAworld.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost("otkaziPonudu")]
+        public IActionResult OtkaziPonudu(OtkaziPonudu ponuda)
+        {
+            _ponudaService.OtkaziPonudu(ponuda.Id);
+            return Ok();
+        }
+
+        [AllowAnonymous]
         [HttpGet("getdisputeid/{id}")]
         public IActionResult GetDisputeId(int id)
         {

@@ -82,6 +82,10 @@
             this.img1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label17 = new System.Windows.Forms.Label();
+            this.btnBrisiPonudu = new System.Windows.Forms.Button();
+            this.panelBrisiPonudu = new System.Windows.Forms.Panel();
+            this.lblObrisano = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -95,11 +99,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.thumb2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.thumb1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.panelBrisiPonudu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(49)))), ((int)(((byte)(58)))));
+            this.panel1.Controls.Add(this.lblObrisano);
             this.panel1.Controls.Add(this.formTitle);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -135,6 +141,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.panelBrisiPonudu);
             this.panel2.Controls.Add(this.txtKoordinate2);
             this.panel2.Controls.Add(this.txtKoordinate1);
             this.panel2.Controls.Add(this.label10);
@@ -627,6 +634,48 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(11, 12);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(109, 17);
+            this.label17.TabIndex = 49;
+            this.label17.Text = "Obriši ponudu ?";
+            // 
+            // btnBrisiPonudu
+            // 
+            this.btnBrisiPonudu.Location = new System.Drawing.Point(123, 9);
+            this.btnBrisiPonudu.Name = "btnBrisiPonudu";
+            this.btnBrisiPonudu.Size = new System.Drawing.Size(75, 23);
+            this.btnBrisiPonudu.TabIndex = 50;
+            this.btnBrisiPonudu.Text = "OBRIŠI";
+            this.btnBrisiPonudu.UseVisualStyleBackColor = true;
+            this.btnBrisiPonudu.Click += new System.EventHandler(this.btnBrisiPonudu_Click);
+            // 
+            // panelBrisiPonudu
+            // 
+            this.panelBrisiPonudu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBrisiPonudu.Controls.Add(this.label17);
+            this.panelBrisiPonudu.Controls.Add(this.btnBrisiPonudu);
+            this.panelBrisiPonudu.ForeColor = System.Drawing.Color.Red;
+            this.panelBrisiPonudu.Location = new System.Drawing.Point(789, 512);
+            this.panelBrisiPonudu.Name = "panelBrisiPonudu";
+            this.panelBrisiPonudu.Size = new System.Drawing.Size(201, 47);
+            this.panelBrisiPonudu.TabIndex = 51;
+            this.panelBrisiPonudu.Visible = false;
+            // 
+            // lblObrisano
+            // 
+            this.lblObrisano.AutoSize = true;
+            this.lblObrisano.BackColor = System.Drawing.Color.Red;
+            this.lblObrisano.Location = new System.Drawing.Point(482, 18);
+            this.lblObrisano.Name = "lblObrisano";
+            this.lblObrisano.Size = new System.Drawing.Size(141, 17);
+            this.lblObrisano.TabIndex = 2;
+            this.lblObrisano.Text = "PONUDA OBRISANA";
+            this.lblObrisano.Visible = false;
+            // 
             // frmAddEditPonuda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -653,6 +702,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.thumb2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.thumb1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.panelBrisiPonudu.ResumeLayout(false);
+            this.panelBrisiPonudu.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -712,5 +763,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtKoordinate2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Panel panelBrisiPonudu;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnBrisiPonudu;
+        private System.Windows.Forms.Label lblObrisano;
     }
 }

@@ -29,5 +29,6 @@ namespace travelAworld.Services
         void OtkaziRezervaciju(int rezervacijaId);
         void DisputeUpdate(int id, DisputeToDisplay disputeToDisplay);
         DisputeToDisplay GetDisputeInfo(int otkazanaPonudaId);
+        void OtkaziPonudu(int ponudaId);
     }
 }
