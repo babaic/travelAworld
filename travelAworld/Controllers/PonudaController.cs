@@ -144,7 +144,7 @@ namespace travelAworld.Controllers
             return Ok(_ponudaService.PopularnaPutovanja());
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost("otkaziRezervaciju")]
         public IActionResult OtkaziRezervaciju(OtkaziRezervaciju rez)
         {
@@ -152,7 +152,7 @@ namespace travelAworld.Controllers
             return Ok();
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost("otkaziPonudu")]
         public IActionResult OtkaziPonudu(OtkaziPonudu ponuda)
         {
@@ -160,14 +160,14 @@ namespace travelAworld.Controllers
             return Ok();
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("getdisputeid/{id}")]
         public IActionResult GetDisputeId(int id)
         {
             return Ok(_ponudaService.GetDisputeInfo(id));
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPut("DisputeUpdate/{id}")]
         public IActionResult DisputeUpdate(int id, DisputeToDisplay disputeToDisplay)
         {

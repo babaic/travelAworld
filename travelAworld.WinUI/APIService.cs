@@ -66,7 +66,7 @@ namespace travelAworld.WinUI
             {
                 var url = $"{endpoint}/{_route}/{id}";
 
-                return await url.PutJsonAsync(request).ReceiveJson<T>();
+                return await url.WithOAuthBearerToken(Properties.Settings.Default.Token).PutJsonAsync(request).ReceiveJson<T>();
             }
             catch (FlurlHttpException ex)
             {

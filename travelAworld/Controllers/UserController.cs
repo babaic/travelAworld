@@ -186,7 +186,7 @@ namespace travelAworld.Controllers
             return Ok(result);
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPut("edituser/{id}")]
         public async Task<IActionResult> EditUser(int id, UserToEdit data)
         {
@@ -218,14 +218,14 @@ namespace travelAworld.Controllers
 
             return Ok();
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("getrezervacijainfo/{id}")]
         public IActionResult GetRezervacijaInfo(int id)
         {
             return Ok(_userService.GetRezervacijaInfo(id));
         }
 
-        [HttpGet("putovanjauser")]
+        //[HttpGet("putovanjauser")]
         public IActionResult GetPutovanjeAndRezervacijeFromUser([FromQuery]SearchUser userId)
         {
             return Ok(_userService.GetPutovanjeAndRezervacijeFromUser(userId));

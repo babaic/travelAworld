@@ -69,9 +69,9 @@ namespace travelAworld.MobileApp.Views
                     PonudaId = _ponuda.PonudaId,
                     TransakcijaId = result.ChargeId
                 };
-                await _servicePonudaUser.Insert<dynamic>(ponudaUser);
+                _servicePonudaUser.Insert<dynamic>(ponudaUser);
 
-                await Navigation.PushAsync(new PaymentMsgPage(true));
+                Navigation.PushAsync(new PaymentMsgPage(true));
             }
             else
             {
