@@ -225,7 +225,7 @@ namespace travelAworld.Controllers
             return Ok(_userService.GetRezervacijaInfo(id));
         }
 
-        //[HttpGet("putovanjauser")]
+        [HttpGet("putovanjauser")]
         public IActionResult GetPutovanjeAndRezervacijeFromUser([FromQuery]SearchUser userId)
         {
             return Ok(_userService.GetPutovanjeAndRezervacijeFromUser(userId));
