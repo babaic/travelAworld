@@ -16,7 +16,7 @@ namespace travelAworld.MobileApp
         private readonly string _route;
 
 #if DEBUG
-        private string _apiUrl = "http://192.168.0.10:45457/api";
+        private string _apiUrl = "http://192.168.0.14:45455/api";
         //private string _apiUrl = "http://localhost:57818/api";
 #endif
 #if RELEASE
@@ -120,7 +120,7 @@ namespace travelAworld.MobileApp
             {
                 var url = $"{_apiUrl}/{_route}/{id}";
 
-                return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
+                return await url.WithOAuthBearerToken(App.Current.Properties["Token"].ToString()).PutJsonAsync(request).ReceiveJson<T>();
             }
             catch (FlurlHttpException ex)
             {

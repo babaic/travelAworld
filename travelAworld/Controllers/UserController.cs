@@ -186,7 +186,7 @@ namespace travelAworld.Controllers
             return Ok(result);
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPut("edituser/{id}")]
         public async Task<IActionResult> EditUser(int id, UserToEdit data)
         {
@@ -218,7 +218,7 @@ namespace travelAworld.Controllers
 
             return Ok();
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("getrezervacijainfo/{id}")]
         public IActionResult GetRezervacijaInfo(int id)
         {
