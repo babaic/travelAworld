@@ -55,7 +55,7 @@ namespace travelAworld.MobileApp.Views
 
             };
 
-            var result = await _service.Insert<Uplata>(card);
+            var result = await _service.InsertA<Uplata>(card);
 
             if (result.Status == "succeeded")
             {
@@ -69,9 +69,9 @@ namespace travelAworld.MobileApp.Views
                     PonudaId = _ponuda.PonudaId,
                     TransakcijaId = result.ChargeId
                 };
-                _servicePonudaUser.Insert<dynamic>(ponudaUser);
+                _servicePonudaUser.InsertA<dynamic>(ponudaUser);
 
-                Navigation.PushAsync(new PaymentMsgPage(true));
+                await Navigation.PushAsync(new PaymentMsgPage(true));
             }
             else
             {
