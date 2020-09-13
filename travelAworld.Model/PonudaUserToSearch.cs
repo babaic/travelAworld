@@ -15,6 +15,6 @@ namespace travelAworld.Model
             set { pageSize = (value > MaxPageSize) ? MaxPageSize : value; }
         }
         public int PonudaId { get; set; } = 0;
-        public DateTime Datum { get; set; } = DateTime.Now;
+        public DateTime? Datum { get; set; } = null;
     }
 }
