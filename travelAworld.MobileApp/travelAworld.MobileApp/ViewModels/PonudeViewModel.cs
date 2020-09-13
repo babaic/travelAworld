@@ -24,7 +24,8 @@ namespace travelAworld.MobileApp.ViewModels
         public void UcitajPonude()
         {
             Ponude.Clear();
-            PageResult<PonudaToDisplay> ponude = _service.Get<PageResult<PonudaToDisplay>>(null);
+            PonudaToSearch ps = new PonudaToSearch { PrikaziObrisane = false };
+            PageResult<PonudaToDisplay> ponude = _service.Get<PageResult<PonudaToDisplay>>(ps);
 
             foreach (var ponuda in ponude.Items)
             {

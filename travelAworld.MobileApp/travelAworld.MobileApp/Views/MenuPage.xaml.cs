@@ -44,7 +44,7 @@ namespace travelAworld.MobileApp.Views
             {
                 menuItems.Add(new HomeMenuItem { Id = MenuItemType.MojaPutovanja, Title = "Moja putovanja" });
             }
-
+            menuItems.Add(new HomeMenuItem { Id = MenuItemType.Postavke, Title = "Postavke" });
             menuItems.Add(new HomeMenuItem { Id = MenuItemType.Logout, Title = "Odjava" });
 
             ListViewMenu.ItemsSource = menuItems;

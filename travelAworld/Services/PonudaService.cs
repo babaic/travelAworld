@@ -340,7 +340,10 @@ namespace travelAworld.Services
                 }).OrderBy(x => x.PonudaId).ToList().AsQueryable();
 
             //filter za mjesece rezervacije
-            query = query.Where(x => x.DatumPolaska.Year == queryParams.Datum.Year && x.DatumPolaska.Month == queryParams.Datum.Month);
+            if(queryParams.Datum != null)
+            {
+                query = query.Where(x => x.DatumPolaska.Year == queryParams.Datum.Value.Year && x.DatumPolaska.Month == queryParams.Datum.Value.Month);
+            }
 
             if (queryParams.PonudaId != 0)
             {
@@ -410,6 +413,50 @@ namespace travelAworld.Services
                         }
                     }
                 }
+            }
+
+            if(preporuke.Count == 0)
+            {
+                //get random id of ponuda
+                Random rnd = new Random();
+                int id = rnd.Next(0, svePonude.Count()-1);
+
+                List<int> ids = new List<int>();
+                foreach(var pon in svePonude)
+                {
+                    ids.Add(pon.Id);
+                }
+
+                var ponuda = svePonude.Where(x => x.Id == ids[id]).FirstOrDefault();
+                preporuke.Add(new PonudaToDisplay
+                {
+                    PonudaId = ponuda.Id,
+                    Cijena = ponuda.Cijena,
+                    CijenaIskljuceno = ponuda.CijenaIskljuceno,
+                    CijenaUkljuceno = ponuda.CijenaUkljuceno,
+                    DatumPolaska = ponuda.DatumPolaska,
+                    DatumPovratka = ponuda.DatumPovratka,
+                    Hotel = ponuda.Hotel,
+                    Lokacija = _context.Lokacija.Include(c => c.Drzava).Where(c => c.Id == ponuda.LokacijaId).Select(c => c.Naziv + " (" + c.Drzava.Naziv + ")").FirstOrDefault(),
+                    DrzavaId = ponuda.Lokacija.DrzavaId,
+                    Napomena = ponuda.Napomena,
+                    Naslov = ponuda.Naslov,
+                    Opis = ponuda.Opis,
+                    Koordinate1 = ponuda.Koordinata1,
+                    Koordinate2 = ponuda.Koordinata2,
+                    _Mjesto = ponuda.Lokacija.Naziv,
+                    _Drzava = ponuda.Lokacija.Drzava.Naziv,
+                    Slike = _context.PonudaSlike.Where(s => s.PonudaId == ponuda.Id).Select(s => s.SlikaUrl).ToList(),
+                    Vodic = _context.VodicPonuda.Include(b => b.Vodic).Where(b => b.PonudaId == ponuda.Id).Select(b => new UsertoDisplay
+                    {
+                        Id = b.VodicId,
+                        Ime = b.Vodic.Ime,
+                        Prezime = b.Vodic.Prezime,
+                        Username = b.Vodic.Ime + " " + b.Vodic.Prezime
+                    }).ToList()
+                });
+
+
             }
 
             

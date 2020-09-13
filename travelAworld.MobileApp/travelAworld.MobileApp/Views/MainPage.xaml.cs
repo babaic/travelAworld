@@ -54,6 +54,9 @@ namespace travelAworld.MobileApp.Views
                     case (int)MenuItemType.Logout:
                         MenuPages.Add(id, new NavigationPage(new LogoutPage()));
                         break;
+                    case (int)MenuItemType.Postavke:
+                        MenuPages.Add(id, new NavigationPage(new SettingsPage()));
+                        break;
                 }
             }
 

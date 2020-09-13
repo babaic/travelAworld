@@ -13,6 +13,7 @@ namespace travelAworld.MobileApp.Models
         Poruke,
         MojaPutovanja,
         MojaPutovanjaUser,
+        Postavke,
         Logout
     }
     public class HomeMenuItem

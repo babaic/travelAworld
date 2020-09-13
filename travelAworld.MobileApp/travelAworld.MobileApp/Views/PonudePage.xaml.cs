@@ -51,6 +51,7 @@ namespace travelAworld.MobileApp.Views
             PonudaToSearch q = new PonudaToSearch
             {
                 Naziv = query,
+                PrikaziObrisane = false,
                 PageSize = 100
             };
             var result = _service.Get<PageResult<PonudaToDisplay>>(q);
