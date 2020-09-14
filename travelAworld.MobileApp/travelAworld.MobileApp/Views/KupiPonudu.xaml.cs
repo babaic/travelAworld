@@ -55,6 +55,11 @@ namespace travelAworld.MobileApp.Views
 
             };
 
+            if(brojKartice.Text == null || mjesec == null || godina == null)
+            {
+                await DisplayAlert("Napomena", "Podaci su obavezni, mozete unijeti bilo koje podatke jer se salju testni podaci na Stripe API", "OK");
+            }
+
             var result = await _service.InsertA<Uplata>(card);
 
             if (result.Status == "succeeded")
