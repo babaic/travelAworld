@@ -133,6 +133,7 @@
             this.btnPrevious.TabIndex = 27;
             this.btnPrevious.Text = "<<";
             this.btnPrevious.UseVisualStyleBackColor = false;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnPrikazi
             // 
@@ -240,6 +241,7 @@
             this.btnNext.TabIndex = 22;
             this.btnNext.Text = ">>";
             this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // label6
             // 
