@@ -14,7 +14,7 @@ namespace travelAworld.WinUI
     public class APIService
     {
         private string _route = null;
-        public string endpoint = "http://localhost:57818/api";
+        public string endpoint = "https://travelaapi2.azurewebsites.net/api/";
 
         public static string Username { get; set; }
         public static string Password { get; set; }

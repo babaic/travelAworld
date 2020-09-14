@@ -47,7 +47,7 @@ namespace travelAworld
             builder.AddRoleManager<RoleManager<Role>>();
             builder.AddSignInManager<SignInManager<User>>();
 
-            services.AddDbContext<MyContext>(x => x.UseSqlServer(Configuration.GetConnectionString("lokalnaBaza")));
+            services.AddDbContext<MyContext>(x => x.UseSqlServer(Configuration.GetConnectionString("azureBaza")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             
