@@ -85,5 +85,19 @@ namespace travelAworld.WinUI.Uposlenici
             frmAddEditUposlenik frm = new frmAddEditUposlenik(Int32.Parse(id.ToString()));
             frm.Show();
         }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            var tempCount = txtPageCounter.Text;
+            txtPageCounter.Text = (Int32.Parse(tempCount) + 1).ToString();
+            this.pretragaKorisnika(sender, e);
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            var tempCount = txtPageCounter.Text;
+            txtPageCounter.Text = (Int32.Parse(tempCount) - 1).ToString();
+            this.pretragaKorisnika(sender, e);
+        }
     }
 }
