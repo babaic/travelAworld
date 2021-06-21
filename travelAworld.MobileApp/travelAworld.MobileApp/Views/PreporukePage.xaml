@@ -23,7 +23,7 @@
                             <ViewCell>
                                 <StackLayout Margin="20,35,20,20">
                                     <Image Source="{Binding Slike[0]}" Aspect="AspectFill" HeightRequest="200" BackgroundColor="red"/>
-                                    <Label Text="{Binding Naslov}" TextColor="#39E0A3" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Naziv}" TextColor="#39E0A3" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

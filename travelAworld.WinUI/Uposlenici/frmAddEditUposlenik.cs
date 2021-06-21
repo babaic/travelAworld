@@ -18,7 +18,7 @@ namespace travelAworld.WinUI.Uposlenici
         private readonly APIService _register = new APIService("user/register");
         private readonly APIService _getUser = new APIService("user");
         private readonly APIService _updateUser = new APIService("user/edituser");
-
+        private readonly APIService obrisiUposlenika = new APIService("user/deleteUser");
         byte[] img = null;
 
         UserToRegister userToRegister = new Model.UserToRegister();
@@ -33,6 +33,8 @@ namespace travelAworld.WinUI.Uposlenici
                 this.formTitle.Text = "Uredi podatke zaposlenog";
                 this.FormBorderStyle = FormBorderStyle.Sizable;
                 txtPassword.Enabled = false;
+                btnPrebaciOglase.Visible = true;
+                btnObrisi.Visible = true;
             }
             loadData();
         }
@@ -154,6 +156,25 @@ namespace travelAworld.WinUI.Uposlenici
                 Image image = Image.FromFile(fileName);
                 userPicture.Image = image;
             }
+        }
+
+        private async void btnObrisi_Click(object sender, EventArgs e)
+        {
+            var isDeleted = await obrisiUposlenika.Insert<bool>(id);
+            if(!isDeleted)
+            {
+                MessageBox.Show("Uposlenika nije moguće obrisati jer ima postavljene oglase.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Uspješno ste obrisali uposlenika", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnPrebaciOglase_Click(object sender, EventArgs e)
+        {
+            frmPrebaciOglas frm = new frmPrebaciOglas(id.Value);
+            frm.Show();
         }
     }
 }

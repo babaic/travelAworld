@@ -15,7 +15,7 @@
         <StackLayout Padding="5" VerticalOptions="CenterAndExpand">
 
 
-            <Image Source="logo3.png" HeightRequest="128"/>
+            <Label FontSize="Title" HorizontalTextAlignment="Center" Text="eRent"/>
             <Label FontSize="Title" HorizontalTextAlignment="Center" Text="Prijava"/>
 
             <Label  Text="Korisničko ime"></Label>

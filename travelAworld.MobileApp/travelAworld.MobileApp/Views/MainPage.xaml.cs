@@ -57,6 +57,12 @@ namespace travelAworld.MobileApp.Views
                     case (int)MenuItemType.Postavke:
                         MenuPages.Add(id, new NavigationPage(new SettingsPage()));
                         break;
+                    case (int)MenuItemType.DodajStan:
+                        MenuPages.Add(id, new NavigationPage(new DodajStanPage()));
+                        break;
+                    case (int)MenuItemType.RezervacijeZahtjevi:
+                        MenuPages.Add(id, new NavigationPage(new RezervacijeZahtjevi()));
+                        break;
                 }
             }
 

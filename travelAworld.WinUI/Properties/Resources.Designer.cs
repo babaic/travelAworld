@@ -343,6 +343,26 @@ namespace travelAworld.WinUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap o_sarajevu {
+            get {
+                object obj = ResourceManager.GetObject("o-sarajevu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap o_sarajevu1 {
+            get {
+                object obj = ResourceManager.GetObject("o-sarajevu1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap random_user_31 {
             get {
                 object obj = ResourceManager.GetObject("random-user-31", resourceCulture);

@@ -11,7 +11,8 @@ namespace travelAworld.Model
         public double Cijena { get; set; }
         public string TransakcijaId { get; set; }
         public DateTime VrijemePlacanja { get; set; }
-        public string TipSobe { get; set; }
-        public int BrojOsoba { get; set; }
+        public DateTime DatumPrijave { get; set; }
+        public string VrijemePrijave { get; set; }
+        public string VrijemeOdjave { get; set; }
     }
 }

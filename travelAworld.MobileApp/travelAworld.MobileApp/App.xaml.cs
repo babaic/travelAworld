@@ -25,7 +25,7 @@ namespace travelAworld.MobileApp
                 MainPage = new LoginPage();
             }
 
-                //MainPage = new LoginPage();
+            MainPage = new LoginPage();
 
         }
 

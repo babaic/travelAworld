@@ -8,6 +8,18 @@
              x:Class="travelAworld.MobileApp.Views.KupiPonudu">
     <ContentPage.Content>
         <StackLayout Padding="20">
+            <Label Text="Datum"></Label>
+            <DatePicker x:Name="datum" MinimumDate="{Binding MinDate}"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Vrijeme prijave"></Label>
+                    <TimePicker x:Name="prijava" Time="4:15:26" />
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Vrijeme odjave"></Label>
+                    <TimePicker x:Name="odjava" Time="4:15:26" />
+                </StackLayout>
+            </StackLayout>
             <Grid BackgroundColor="WhiteSmoke">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -33,7 +45,7 @@
             
             <Label Text="UKUPNO:"/>
             <Label x:Name="cijena" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
-            <Button Clicked="kupiPonudu" Text="Kupi ponudu" BackgroundColor="#FF2607" TextColor="White" HeightRequest="40"/>
+            <Button Clicked="kupiPonudu" Text="Rezerviši" BackgroundColor="green" TextColor="White" HeightRequest="40"/>
         </StackLayout>
 
 

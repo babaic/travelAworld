@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{400EB1D7-522F-4C7A-BCD7-FEB2FA4C0F96}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>travelAworld.WinUI</RootNamespace>
+    <AssemblyName>travelAworld.WinUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Flurl, Version=2.8.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.2.8.2\lib\net40\Flurl.dll</HintPath>
+    </Reference>
+    <Reference Include="Flurl.Http, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.Http.2.4.2\lib\net46\Flurl.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=18.2460.0.57, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Base.18.2.0.57\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=18.2460.0.57, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.18.2.0.57\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=18.2460.0.57, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Pdf.WinForms.18.2.0.57\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APIService.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIndex.Designer.cs">
+      <DependentUpon>frmIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers.cs" />
+    <Compile Include="Ponude\frmAddEditPonuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ponude\frmAddEditPonuda.Designer.cs">
+      <DependentUpon>frmAddEditPonuda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ponude\frmAddLokacija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ponude\frmAddLokacija.Designer.cs">
+      <DependentUpon>frmAddLokacija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ponude\frmListaPonuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ponude\frmListaPonuda.Designer.cs">
+      <DependentUpon>frmListaPonuda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rezervacije\frmListaRezervacija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rezervacije\frmListaRezervacija.Designer.cs">
+      <DependentUpon>frmListaRezervacija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rezervacije\frmPosaljiObavijest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rezervacije\frmPosaljiObavijest.Designer.cs">
+      <DependentUpon>frmPosaljiObavijest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rezervacije\frmRezervacijaInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rezervacije\frmRezervacijaInfo.Designer.cs">
+      <DependentUpon>frmRezervacijaInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistika\frmStatistika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistika\frmStatistika.Designer.cs">
+      <DependentUpon>frmStatistika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Uposlenici\frmAddEditUposlenik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Uposlenici\frmAddEditUposlenik.Designer.cs">
+      <DependentUpon>frmAddEditUposlenik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Uposlenici\frmListaUposlenika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Uposlenici\frmListaUposlenika.Designer.cs">
+      <DependentUpon>frmListaUposlenika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Uposlenici\frmPrebaciOglas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Uposlenici\frmPrebaciOglas.Designer.cs">
+      <DependentUpon>frmPrebaciOglas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmUsers.Designer.cs">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmUsersPonude.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmUsersPonude.Designer.cs">
+      <DependentUpon>frmUsersPonude.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmIndex.resx">
+      <DependentUpon>frmIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ponude\frmAddEditPonuda.resx">
+      <DependentUpon>frmAddEditPonuda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ponude\frmAddLokacija.resx">
+      <DependentUpon>frmAddLokacija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ponude\frmListaPonuda.resx">
+      <DependentUpon>frmListaPonuda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Rezervacije\frmListaRezervacija.resx">
+      <DependentUpon>frmListaRezervacija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rezervacije\frmPosaljiObavijest.resx">
+      <DependentUpon>frmPosaljiObavijest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rezervacije\frmRezervacijaInfo.resx">
+      <DependentUpon>frmRezervacijaInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistika\frmStatistika.resx">
+      <DependentUpon>frmStatistika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Uposlenici\frmAddEditUposlenik.resx">
+      <DependentUpon>frmAddEditUposlenik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Uposlenici\frmListaUposlenika.resx">
+      <DependentUpon>frmListaUposlenika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Uposlenici\frmPrebaciOglas.resx">
+      <DependentUpon>frmPrebaciOglas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmUsers.resx">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmUsersPonude.resx">
+      <DependentUpon>frmUsersPonude.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\travelAworld.Model\eRent.Model.csproj">
+      <Project>{63DF2AD2-4179-4CD1-B83A-37EE2883555C}</Project>
+      <Name>eRent.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoMakr_5xGN8m.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sunset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tourist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\graphic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\random-user-31.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimise-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoMakr_9VVlNv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoMakr_1tI30M.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fbfbfc6d-298f-47c8-a100-eb346a5facec_200x200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\219f16ad-2853-479d-9f16-d28c202d7006_200x200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7aa931d2-77a1-4ad4-857c-6111aa7f94d3_200x200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-account-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-user-group-man-man-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-account-24 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-account-24 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-team-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-team-241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-team-24 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-traveler-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-chat-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-money-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-airplane-take-off-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-airplane-mode-on-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-airplane-mode-on-24 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-calendar-23-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-bar-chart-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\38636c09-03eb-434b-82ec-341e5b0b939d_200x200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\92e943_394c3a43edad47d291612c56954ca377_mv2_d_2800_1439_s_2 %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users-vector-icon-png_260862.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-sarajevu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-sarajevu1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

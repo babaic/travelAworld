@@ -60,5 +60,25 @@ namespace travelAworld.WinUI
             }
 
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmLogin_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Stripe;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Stripe;
 using travelAworld.Model;
 
-namespace travelAworld.Controllers
+namespace eRent.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -22,7 +22,7 @@ namespace travelAworld.Controllers
             // `source` is obtained with Stripe.js; see https://stripe.com/docs/payments/accept-a-payment-charges#web-create-token
             var options = new ChargeCreateOptions
             {
-                Amount = cardInfo.Amount,
+                Amount = cardInfo.Amount*100,
                 Currency = "bam",
                 Source = token,
                 Description = cardInfo.Desc,

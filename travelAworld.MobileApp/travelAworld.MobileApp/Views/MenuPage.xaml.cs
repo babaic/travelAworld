@@ -34,15 +34,14 @@ namespace travelAworld.MobileApp.Views
             {
                 menuItems.Add(new HomeMenuItem { Id = MenuItemType.Browse, Title = "Ponude" });
                 menuItems.Add(new HomeMenuItem { Id = MenuItemType.Preporuke, Title = "Preporuke" });
-                menuItems.Add(new HomeMenuItem { Id = MenuItemType.Obavijesti, Title = "Obavijesti" });
-                menuItems.Add(new HomeMenuItem { Id = MenuItemType.Poruke, Title = "Poruke" });
-                menuItems.Add(new HomeMenuItem { Id = MenuItemType.MojaPutovanjaUser, Title = "Moja putovanja" });
+                menuItems.Add(new HomeMenuItem { Id = MenuItemType.MojaPutovanjaUser, Title = "Moje rezervacije" });
             }
 
 
-            if(_role == "Vodić")
+            if(_role == "Administrator")
             {
-                menuItems.Add(new HomeMenuItem { Id = MenuItemType.MojaPutovanja, Title = "Moja putovanja" });
+                menuItems.Add(new HomeMenuItem { Id = MenuItemType.DodajStan, Title = "Dodaj stan" });
+                menuItems.Add(new HomeMenuItem { Id = MenuItemType.RezervacijeZahtjevi, Title = "Zahtjevi za rezervacije" });
             }
             menuItems.Add(new HomeMenuItem { Id = MenuItemType.Postavke, Title = "Postavke" });
             menuItems.Add(new HomeMenuItem { Id = MenuItemType.Logout, Title = "Odjava" });

@@ -30,31 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblObrisano = new System.Windows.Forms.Label();
             this.formTitle = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtKoordinate2 = new System.Windows.Forms.TextBox();
-            this.txtKoordinate1 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.checkedListVodici = new System.Windows.Forms.CheckedListBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panelBrisiPonudu = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.btnBrisiPonudu = new System.Windows.Forms.Button();
             this.dropLokacija = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtHotel = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.rtxtNapomene = new System.Windows.Forms.RichTextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.rtxtCijenaNijeUkljuceno = new System.Windows.Forms.RichTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.rtxtCijenaUkljuceno = new System.Windows.Forms.RichTextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtCijena = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateDatumPovratka = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateDatumPolaska = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.rtxtOpis = new System.Windows.Forms.RichTextBox();
             this.btnSaveForm = new System.Windows.Forms.Button();
             this.txtUserPrezime = new System.Windows.Forms.Label();
@@ -82,13 +68,26 @@
             this.img1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label17 = new System.Windows.Forms.Label();
-            this.btnBrisiPonudu = new System.Windows.Forms.Button();
-            this.panelBrisiPonudu = new System.Windows.Forms.Panel();
-            this.lblObrisano = new System.Windows.Forms.Label();
+            this.txgGodina = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtKvadratura = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtBrojEtaza = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtSprat = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cbGrijanje = new System.Windows.Forms.CheckBox();
+            this.cbLift = new System.Windows.Forms.CheckBox();
+            this.cbKlima = new System.Windows.Forms.CheckBox();
+            this.cbRezije = new System.Windows.Forms.CheckBox();
+            this.txtAdresa = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dropKategorija = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panelBrisiPonudu.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -99,7 +98,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.thumb2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.thumb1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.panelBrisiPonudu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -111,8 +109,19 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1165, 60);
+            this.panel1.Size = new System.Drawing.Size(1165, 75);
             this.panel1.TabIndex = 15;
+            // 
+            // lblObrisano
+            // 
+            this.lblObrisano.AutoSize = true;
+            this.lblObrisano.BackColor = System.Drawing.Color.Red;
+            this.lblObrisano.Location = new System.Drawing.Point(482, 18);
+            this.lblObrisano.Name = "lblObrisano";
+            this.lblObrisano.Size = new System.Drawing.Size(141, 17);
+            this.lblObrisano.TabIndex = 2;
+            this.lblObrisano.Text = "PONUDA OBRISANA";
+            this.lblObrisano.Visible = false;
             // 
             // formTitle
             // 
@@ -123,9 +132,9 @@
             this.formTitle.ForeColor = System.Drawing.SystemColors.Control;
             this.formTitle.Location = new System.Drawing.Point(50, 13);
             this.formTitle.Name = "formTitle";
-            this.formTitle.Size = new System.Drawing.Size(144, 22);
+            this.formTitle.Size = new System.Drawing.Size(168, 22);
             this.formTitle.TabIndex = 1;
-            this.formTitle.Text = "Dodaj ponudu";
+            this.formTitle.Text = "Dodaj nekretninu";
             // 
             // pictureBox1
             // 
@@ -134,36 +143,34 @@
             this.pictureBox1.Image = global::travelAworld.WinUI.Properties.Resources.icons8_airplane_mode_on_24;
             this.pictureBox1.Location = new System.Drawing.Point(16, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 29);
+            this.pictureBox1.Size = new System.Drawing.Size(27, 44);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.dropKategorija);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.txtAdresa);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.cbRezije);
+            this.panel2.Controls.Add(this.cbKlima);
+            this.panel2.Controls.Add(this.cbLift);
+            this.panel2.Controls.Add(this.cbGrijanje);
+            this.panel2.Controls.Add(this.txtSprat);
+            this.panel2.Controls.Add(this.label18);
+            this.panel2.Controls.Add(this.txtBrojEtaza);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.txtKvadratura);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.txgGodina);
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.panelBrisiPonudu);
-            this.panel2.Controls.Add(this.txtKoordinate2);
-            this.panel2.Controls.Add(this.txtKoordinate1);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.checkedListVodici);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.dropLokacija);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.txtHotel);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.rtxtNapomene);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.rtxtCijenaNijeUkljuceno);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.rtxtCijenaUkljuceno);
-            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.txtCijena);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.dateDatumPovratka);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.dateDatumPolaska);
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.rtxtOpis);
             this.panel2.Controls.Add(this.btnSaveForm);
             this.panel2.Controls.Add(this.txtUserPrezime);
@@ -174,67 +181,41 @@
             this.panel2.Size = new System.Drawing.Size(1140, 636);
             this.panel2.TabIndex = 16;
             // 
-            // txtKoordinate2
+            // panelBrisiPonudu
             // 
-            this.txtKoordinate2.Location = new System.Drawing.Point(884, 226);
-            this.txtKoordinate2.Name = "txtKoordinate2";
-            this.txtKoordinate2.Size = new System.Drawing.Size(71, 22);
-            this.txtKoordinate2.TabIndex = 48;
+            this.panelBrisiPonudu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBrisiPonudu.Controls.Add(this.label17);
+            this.panelBrisiPonudu.Controls.Add(this.btnBrisiPonudu);
+            this.panelBrisiPonudu.ForeColor = System.Drawing.Color.Red;
+            this.panelBrisiPonudu.Location = new System.Drawing.Point(789, 512);
+            this.panelBrisiPonudu.Name = "panelBrisiPonudu";
+            this.panelBrisiPonudu.Size = new System.Drawing.Size(201, 47);
+            this.panelBrisiPonudu.TabIndex = 51;
+            this.panelBrisiPonudu.Visible = false;
             // 
-            // txtKoordinate1
+            // label17
             // 
-            this.txtKoordinate1.Location = new System.Drawing.Point(789, 226);
-            this.txtKoordinate1.Name = "txtKoordinate1";
-            this.txtKoordinate1.Size = new System.Drawing.Size(71, 22);
-            this.txtKoordinate1.TabIndex = 46;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(11, 12);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(109, 17);
+            this.label17.TabIndex = 49;
+            this.label17.Text = "Obriši ponudu ?";
             // 
-            // label10
+            // btnBrisiPonudu
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label10.Location = new System.Drawing.Point(619, 224);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 22);
-            this.label10.TabIndex = 47;
-            this.label10.Text = "Koordinate";
-            // 
-            // checkedListVodici
-            // 
-            this.checkedListVodici.FormattingEnabled = true;
-            this.checkedListVodici.Location = new System.Drawing.Point(789, 272);
-            this.checkedListVodici.Name = "checkedListVodici";
-            this.checkedListVodici.Size = new System.Drawing.Size(201, 123);
-            this.checkedListVodici.TabIndex = 45;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label9.Location = new System.Drawing.Point(619, 272);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 22);
-            this.label9.TabIndex = 44;
-            this.label9.Text = "Vodići";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Crimson;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(959, 178);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 27);
-            this.button1.TabIndex = 43;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnBrisiPonudu.Location = new System.Drawing.Point(123, 9);
+            this.btnBrisiPonudu.Name = "btnBrisiPonudu";
+            this.btnBrisiPonudu.Size = new System.Drawing.Size(75, 23);
+            this.btnBrisiPonudu.TabIndex = 50;
+            this.btnBrisiPonudu.Text = "OBRIŠI";
+            this.btnBrisiPonudu.UseVisualStyleBackColor = true;
+            this.btnBrisiPonudu.Click += new System.EventHandler(this.btnBrisiPonudu_Click);
             // 
             // dropLokacija
             // 
             this.dropLokacija.FormattingEnabled = true;
-            this.dropLokacija.Location = new System.Drawing.Point(789, 179);
+            this.dropLokacija.Location = new System.Drawing.Point(208, 179);
             this.dropLokacija.Name = "dropLokacija";
             this.dropLokacija.Size = new System.Drawing.Size(166, 24);
             this.dropLokacija.TabIndex = 42;
@@ -243,86 +224,15 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label8.Location = new System.Drawing.Point(619, 183);
+            this.label8.Location = new System.Drawing.Point(38, 183);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(164, 22);
+            this.label8.Size = new System.Drawing.Size(106, 28);
             this.label8.TabIndex = 41;
-            this.label8.Text = "Lokacija ponude";
-            // 
-            // txtHotel
-            // 
-            this.txtHotel.Location = new System.Drawing.Point(789, 144);
-            this.txtHotel.Name = "txtHotel";
-            this.txtHotel.Size = new System.Drawing.Size(201, 22);
-            this.txtHotel.TabIndex = 38;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label7.Location = new System.Drawing.Point(619, 142);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(125, 22);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "Naziv hotela";
-            // 
-            // rtxtNapomene
-            // 
-            this.rtxtNapomene.Location = new System.Drawing.Point(789, 30);
-            this.rtxtNapomene.Name = "rtxtNapomene";
-            this.rtxtNapomene.Size = new System.Drawing.Size(309, 96);
-            this.rtxtNapomene.TabIndex = 37;
-            this.rtxtNapomene.Text = "";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label6.Location = new System.Drawing.Point(619, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(115, 22);
-            this.label6.TabIndex = 36;
-            this.label6.Text = "Napomene";
-            // 
-            // rtxtCijenaNijeUkljuceno
-            // 
-            this.rtxtCijenaNijeUkljuceno.Location = new System.Drawing.Point(207, 414);
-            this.rtxtCijenaNijeUkljuceno.Name = "rtxtCijenaNijeUkljuceno";
-            this.rtxtCijenaNijeUkljuceno.Size = new System.Drawing.Size(300, 96);
-            this.rtxtCijenaNijeUkljuceno.TabIndex = 35;
-            this.rtxtCijenaNijeUkljuceno.Text = "";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label5.Location = new System.Drawing.Point(27, 413);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(156, 22);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "Nije uklj. u cijenu";
-            // 
-            // rtxtCijenaUkljuceno
-            // 
-            this.rtxtCijenaUkljuceno.Location = new System.Drawing.Point(207, 302);
-            this.rtxtCijenaUkljuceno.Name = "rtxtCijenaUkljuceno";
-            this.rtxtCijenaUkljuceno.Size = new System.Drawing.Size(300, 96);
-            this.rtxtCijenaUkljuceno.TabIndex = 33;
-            this.rtxtCijenaUkljuceno.Text = "";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label4.Location = new System.Drawing.Point(28, 301);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(174, 22);
-            this.label4.TabIndex = 32;
-            this.label4.Text = "Uključeno u cijenu";
+            this.label8.Text = "Lokacija";
             // 
             // txtCijena
             // 
-            this.txtCijena.Location = new System.Drawing.Point(207, 261);
+            this.txtCijena.Location = new System.Drawing.Point(207, 274);
             this.txtCijena.Name = "txtCijena";
             this.txtCijena.Size = new System.Drawing.Size(81, 22);
             this.txtCijena.TabIndex = 31;
@@ -331,45 +241,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label3.Location = new System.Drawing.Point(28, 260);
+            this.label3.Location = new System.Drawing.Point(37, 275);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 22);
             this.label3.TabIndex = 30;
             this.label3.Text = "Cijena";
-            // 
-            // dateDatumPovratka
-            // 
-            this.dateDatumPovratka.Location = new System.Drawing.Point(208, 223);
-            this.dateDatumPovratka.Name = "dateDatumPovratka";
-            this.dateDatumPovratka.Size = new System.Drawing.Size(200, 22);
-            this.dateDatumPovratka.TabIndex = 29;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label2.Location = new System.Drawing.Point(28, 223);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(165, 22);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Datum povratka";
-            // 
-            // dateDatumPolaska
-            // 
-            this.dateDatumPolaska.Location = new System.Drawing.Point(208, 182);
-            this.dateDatumPolaska.Name = "dateDatumPolaska";
-            this.dateDatumPolaska.Size = new System.Drawing.Size(200, 22);
-            this.dateDatumPolaska.TabIndex = 27;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label1.Location = new System.Drawing.Point(28, 182);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 22);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Datum polaska";
             // 
             // rtxtOpis
             // 
@@ -417,9 +293,9 @@
             this.txtNaziv.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.txtNaziv.Location = new System.Drawing.Point(37, 27);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(140, 22);
+            this.txtNaziv.Size = new System.Drawing.Size(205, 28);
             this.txtNaziv.TabIndex = 5;
-            this.txtNaziv.Text = "Naziv ponude";
+            this.txtNaziv.Text = "Naziv nekretnine";
             // 
             // tabControl1
             // 
@@ -634,47 +510,148 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // label17
+            // txgGodina
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(11, 12);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(109, 17);
-            this.label17.TabIndex = 49;
-            this.label17.Text = "Obriši ponudu ?";
+            this.txgGodina.Location = new System.Drawing.Point(207, 314);
+            this.txgGodina.Name = "txgGodina";
+            this.txgGodina.Size = new System.Drawing.Size(81, 22);
+            this.txgGodina.TabIndex = 52;
             // 
-            // btnBrisiPonudu
+            // label1
             // 
-            this.btnBrisiPonudu.Location = new System.Drawing.Point(123, 9);
-            this.btnBrisiPonudu.Name = "btnBrisiPonudu";
-            this.btnBrisiPonudu.Size = new System.Drawing.Size(75, 23);
-            this.btnBrisiPonudu.TabIndex = 50;
-            this.btnBrisiPonudu.Text = "OBRIŠI";
-            this.btnBrisiPonudu.UseVisualStyleBackColor = true;
-            this.btnBrisiPonudu.Click += new System.EventHandler(this.btnBrisiPonudu_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.8F);
+            this.label1.Location = new System.Drawing.Point(37, 312);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(168, 22);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "Godina izgradnje";
             // 
-            // panelBrisiPonudu
+            // txtKvadratura
             // 
-            this.panelBrisiPonudu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelBrisiPonudu.Controls.Add(this.label17);
-            this.panelBrisiPonudu.Controls.Add(this.btnBrisiPonudu);
-            this.panelBrisiPonudu.ForeColor = System.Drawing.Color.Red;
-            this.panelBrisiPonudu.Location = new System.Drawing.Point(789, 512);
-            this.panelBrisiPonudu.Name = "panelBrisiPonudu";
-            this.panelBrisiPonudu.Size = new System.Drawing.Size(201, 47);
-            this.panelBrisiPonudu.TabIndex = 51;
-            this.panelBrisiPonudu.Visible = false;
+            this.txtKvadratura.Location = new System.Drawing.Point(206, 353);
+            this.txtKvadratura.Name = "txtKvadratura";
+            this.txtKvadratura.Size = new System.Drawing.Size(81, 22);
+            this.txtKvadratura.TabIndex = 54;
             // 
-            // lblObrisano
+            // label2
             // 
-            this.lblObrisano.AutoSize = true;
-            this.lblObrisano.BackColor = System.Drawing.Color.Red;
-            this.lblObrisano.Location = new System.Drawing.Point(482, 18);
-            this.lblObrisano.Name = "lblObrisano";
-            this.lblObrisano.Size = new System.Drawing.Size(141, 17);
-            this.lblObrisano.TabIndex = 2;
-            this.lblObrisano.Text = "PONUDA OBRISANA";
-            this.lblObrisano.Visible = false;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.8F);
+            this.label2.Location = new System.Drawing.Point(36, 351);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 22);
+            this.label2.TabIndex = 55;
+            this.label2.Text = "Kvadratura";
+            // 
+            // txtBrojEtaza
+            // 
+            this.txtBrojEtaza.Location = new System.Drawing.Point(207, 392);
+            this.txtBrojEtaza.Name = "txtBrojEtaza";
+            this.txtBrojEtaza.Size = new System.Drawing.Size(81, 22);
+            this.txtBrojEtaza.TabIndex = 56;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 10.8F);
+            this.label4.Location = new System.Drawing.Point(37, 390);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 22);
+            this.label4.TabIndex = 57;
+            this.label4.Text = "Broj etaža";
+            // 
+            // txtSprat
+            // 
+            this.txtSprat.Location = new System.Drawing.Point(207, 425);
+            this.txtSprat.Name = "txtSprat";
+            this.txtSprat.Size = new System.Drawing.Size(81, 22);
+            this.txtSprat.TabIndex = 58;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 10.8F);
+            this.label18.Location = new System.Drawing.Point(37, 423);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(58, 22);
+            this.label18.TabIndex = 59;
+            this.label18.Text = "Sprat";
+            // 
+            // cbGrijanje
+            // 
+            this.cbGrijanje.AutoSize = true;
+            this.cbGrijanje.Location = new System.Drawing.Point(41, 483);
+            this.cbGrijanje.Name = "cbGrijanje";
+            this.cbGrijanje.Size = new System.Drawing.Size(79, 21);
+            this.cbGrijanje.TabIndex = 60;
+            this.cbGrijanje.Text = "Grijanje";
+            this.cbGrijanje.UseVisualStyleBackColor = true;
+            // 
+            // cbLift
+            // 
+            this.cbLift.AutoSize = true;
+            this.cbLift.Location = new System.Drawing.Point(126, 483);
+            this.cbLift.Name = "cbLift";
+            this.cbLift.Size = new System.Drawing.Size(49, 21);
+            this.cbLift.TabIndex = 61;
+            this.cbLift.Text = "Lift";
+            this.cbLift.UseVisualStyleBackColor = true;
+            // 
+            // cbKlima
+            // 
+            this.cbKlima.AutoSize = true;
+            this.cbKlima.Location = new System.Drawing.Point(183, 483);
+            this.cbKlima.Name = "cbKlima";
+            this.cbKlima.Size = new System.Drawing.Size(64, 21);
+            this.cbKlima.TabIndex = 62;
+            this.cbKlima.Text = "Klima";
+            this.cbKlima.UseVisualStyleBackColor = true;
+            // 
+            // cbRezije
+            // 
+            this.cbRezije.AutoSize = true;
+            this.cbRezije.Location = new System.Drawing.Point(253, 483);
+            this.cbRezije.Name = "cbRezije";
+            this.cbRezije.Size = new System.Drawing.Size(130, 21);
+            this.cbRezije.TabIndex = 63;
+            this.cbRezije.Text = "Uključene režije";
+            this.cbRezije.UseVisualStyleBackColor = true;
+            // 
+            // txtAdresa
+            // 
+            this.txtAdresa.Location = new System.Drawing.Point(208, 222);
+            this.txtAdresa.Name = "txtAdresa";
+            this.txtAdresa.Size = new System.Drawing.Size(81, 22);
+            this.txtAdresa.TabIndex = 65;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 10.8F);
+            this.label5.Location = new System.Drawing.Point(38, 223);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(95, 28);
+            this.label5.TabIndex = 64;
+            this.label5.Text = "Adresa";
+            // 
+            // dropKategorija
+            // 
+            this.dropKategorija.FormattingEnabled = true;
+            this.dropKategorija.Location = new System.Drawing.Point(720, 25);
+            this.dropKategorija.Name = "dropKategorija";
+            this.dropKategorija.Size = new System.Drawing.Size(166, 24);
+            this.dropKategorija.TabIndex = 67;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 10.8F);
+            this.label6.Location = new System.Drawing.Point(550, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(129, 28);
+            this.label6.TabIndex = 66;
+            this.label6.Text = "Kategorija";
             // 
             // frmAddEditPonuda
             // 
@@ -691,6 +668,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panelBrisiPonudu.ResumeLayout(false);
+            this.panelBrisiPonudu.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -702,8 +681,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.thumb2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.thumb1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.panelBrisiPonudu.ResumeLayout(false);
-            this.panelBrisiPonudu.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -719,24 +696,9 @@
         private System.Windows.Forms.TextBox txtIme;
         private System.Windows.Forms.Label txtNaziv;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtHotel;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RichTextBox rtxtNapomene;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RichTextBox rtxtCijenaNijeUkljuceno;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RichTextBox rtxtCijenaUkljuceno;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCijena;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateDatumPovratka;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateDatumPolaska;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtxtOpis;
-        private System.Windows.Forms.CheckedListBox checkedListVodici;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox dropLokacija;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -759,13 +721,26 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox img1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtKoordinate1;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtKoordinate2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Panel panelBrisiPonudu;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnBrisiPonudu;
         private System.Windows.Forms.Label lblObrisano;
+        private System.Windows.Forms.CheckBox cbRezije;
+        private System.Windows.Forms.CheckBox cbKlima;
+        private System.Windows.Forms.CheckBox cbLift;
+        private System.Windows.Forms.CheckBox cbGrijanje;
+        private System.Windows.Forms.TextBox txtSprat;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtBrojEtaza;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtKvadratura;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txgGodina;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtAdresa;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox dropKategorija;
+        private System.Windows.Forms.Label label6;
     }
 }

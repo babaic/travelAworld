@@ -32,6 +32,8 @@
             this.formTitle = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnObrisi = new System.Windows.Forms.Button();
+            this.btnPrebaciOglase = new System.Windows.Forms.Button();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.Label();
             this.btnSaveForm = new System.Windows.Forms.Button();
@@ -80,7 +82,7 @@
             this.formTitle.ForeColor = System.Drawing.SystemColors.Control;
             this.formTitle.Location = new System.Drawing.Point(50, 13);
             this.formTitle.Name = "formTitle";
-            this.formTitle.Size = new System.Drawing.Size(175, 22);
+            this.formTitle.Size = new System.Drawing.Size(141, 20);
             this.formTitle.TabIndex = 1;
             this.formTitle.Text = "Dodaj zaposlenog";
             // 
@@ -97,6 +99,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnObrisi);
+            this.panel2.Controls.Add(this.btnPrebaciOglase);
             this.panel2.Controls.Add(this.txtMail);
             this.panel2.Controls.Add(this.txtEmail);
             this.panel2.Controls.Add(this.btnSaveForm);
@@ -121,6 +125,36 @@
             this.panel2.Size = new System.Drawing.Size(1140, 636);
             this.panel2.TabIndex = 15;
             // 
+            // btnObrisi
+            // 
+            this.btnObrisi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnObrisi.FlatAppearance.BorderSize = 0;
+            this.btnObrisi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnObrisi.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnObrisi.Location = new System.Drawing.Point(882, 358);
+            this.btnObrisi.Name = "btnObrisi";
+            this.btnObrisi.Size = new System.Drawing.Size(222, 39);
+            this.btnObrisi.TabIndex = 27;
+            this.btnObrisi.Text = "Obriši";
+            this.btnObrisi.UseVisualStyleBackColor = false;
+            this.btnObrisi.Visible = false;
+            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
+            // 
+            // btnPrebaciOglase
+            // 
+            this.btnPrebaciOglase.BackColor = System.Drawing.Color.Green;
+            this.btnPrebaciOglase.FlatAppearance.BorderSize = 0;
+            this.btnPrebaciOglase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrebaciOglase.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnPrebaciOglase.Location = new System.Drawing.Point(882, 301);
+            this.btnPrebaciOglase.Name = "btnPrebaciOglase";
+            this.btnPrebaciOglase.Size = new System.Drawing.Size(222, 39);
+            this.btnPrebaciOglase.TabIndex = 26;
+            this.btnPrebaciOglase.Text = "Prebaci oglase";
+            this.btnPrebaciOglase.UseVisualStyleBackColor = false;
+            this.btnPrebaciOglase.Visible = false;
+            this.btnPrebaciOglase.Click += new System.EventHandler(this.btnPrebaciOglase_Click);
+            // 
             // txtMail
             // 
             this.txtMail.Location = new System.Drawing.Point(192, 155);
@@ -134,7 +168,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.txtEmail.Location = new System.Drawing.Point(37, 154);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(56, 22);
+            this.txtEmail.Size = new System.Drawing.Size(46, 20);
             this.txtEmail.TabIndex = 25;
             this.txtEmail.Text = "Email";
             // 
@@ -199,7 +233,7 @@
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.label3.Location = new System.Drawing.Point(37, 336);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 22);
+            this.label3.Size = new System.Drawing.Size(62, 20);
             this.label3.TabIndex = 19;
             this.label3.Text = "Lozinka";
             // 
@@ -224,7 +258,7 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.label2.Location = new System.Drawing.Point(37, 289);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 22);
+            this.label2.Size = new System.Drawing.Size(68, 20);
             this.label2.TabIndex = 15;
             this.label2.Text = "Funkcija";
             // 
@@ -234,7 +268,7 @@
             this.label4.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.label4.Location = new System.Drawing.Point(37, 243);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(149, 22);
+            this.label4.Size = new System.Drawing.Size(118, 20);
             this.label4.TabIndex = 13;
             this.label4.Text = "Datum rođenja";
             // 
@@ -251,7 +285,7 @@
             this.txtUserAdresa.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.txtUserAdresa.Location = new System.Drawing.Point(37, 200);
             this.txtUserAdresa.Name = "txtUserAdresa";
-            this.txtUserAdresa.Size = new System.Drawing.Size(76, 22);
+            this.txtUserAdresa.Size = new System.Drawing.Size(61, 20);
             this.txtUserAdresa.TabIndex = 11;
             this.txtUserAdresa.Text = "Adresa";
             // 
@@ -268,7 +302,7 @@
             this.txtUserUsername.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.txtUserUsername.Location = new System.Drawing.Point(37, 110);
             this.txtUserUsername.Name = "txtUserUsername";
-            this.txtUserUsername.Size = new System.Drawing.Size(135, 22);
+            this.txtUserUsername.Size = new System.Drawing.Size(112, 20);
             this.txtUserUsername.TabIndex = 9;
             this.txtUserUsername.Text = "Korisničko ime";
             // 
@@ -285,7 +319,7 @@
             this.txtUserPrezime.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.txtUserPrezime.Location = new System.Drawing.Point(37, 67);
             this.txtUserPrezime.Name = "txtUserPrezime";
-            this.txtUserPrezime.Size = new System.Drawing.Size(79, 22);
+            this.txtUserPrezime.Size = new System.Drawing.Size(65, 20);
             this.txtUserPrezime.TabIndex = 7;
             this.txtUserPrezime.Text = "Prezime";
             // 
@@ -302,7 +336,7 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.label1.Location = new System.Drawing.Point(37, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 22);
+            this.label1.Size = new System.Drawing.Size(37, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "Ime";
             // 
@@ -358,5 +392,7 @@
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label txtEmail;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnObrisi;
+        private System.Windows.Forms.Button btnPrebaciOglase;
     }
 }

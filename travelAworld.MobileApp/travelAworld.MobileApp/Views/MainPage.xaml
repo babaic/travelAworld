@@ -19,9 +19,10 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:PonudePage /> <!--PonudePage-->
+                <views:PonudePage />
+                <!--PonudePage-->
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>
-    
+
 </MasterDetailPage>

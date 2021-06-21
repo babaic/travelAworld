@@ -17,50 +17,33 @@ namespace travelAworld.Services
             _context = context;
         }
 
-        public List<PutovanjeRezervacijaToDisplay> GetPutovanjeAndRezervacijeFromUser(SearchUser userId)
+        public bool CanDeleteUser(int userId)
         {
-            var result = _context.PonudaUser.Include(c => c.Ponuda).Where(c => c.UserId == userId.Id).OrderByDescending(c => c.Id).Select(x => new PutovanjeRezervacijaToDisplay
+            var userNekretnina = _context.Nekretnina.Where(x => x.UserId == userId).ToList();
+            if (userNekretnina.Count() != 0)
             {
-                PonudaId = x.PonudaId,
-                Cijena = x.Ponuda.Cijena,
-                DatumPolaska = x.Ponuda.DatumPolaska,
-                DatumPovratka = x.Ponuda.DatumPovratka,
-                Hotel = x.Ponuda.Hotel,
-                Lokacija = _context.Lokacija.Include(c => c.Drzava).Where(c => c.Id == x.Ponuda.LokacijaId).Select(c => c.Naziv + " (" + c.Drzava.Naziv + ")").FirstOrDefault(),
-                Naslov = x.Ponuda.Naslov,
-                rezervacijaId = x.Id
-            }).ToList();
-
-            return result;
+                return false;
+            }
+            var admin = _context.Users.FirstOrDefault(x => x.UserName.ToLower() == "admin");
+            if(admin == null)
+            {
+                var uid = _context.UserRoles.Include(x => x.User).Where(x => x.Role.Name == "Uposlenik" && x.UserId!=userId).Select(x=>x.UserId).FirstOrDefault();
+                admin = _context.Users.FirstOrDefault(x=>x.Id == uid);
+            }
+            if(admin == null)
+            {
+                return false;
+            }
+            var ugovori = _context.Ugovor.Where(x => x.KorisnikId == userId).ToList();
+            foreach(var u in ugovori)
+            {
+                u.KorisnikId = admin.Id;
+            }
+            _context.SaveChanges();
+            return true;
         }
 
-        public RezervacijaInfo GetRezervacijaInfo(int ponudaUserId)
-        {
-            var result = _context.PonudaUser.Where(x => x.Id == ponudaUserId).Include(x => x.User).Include(x => x.Ponuda).Select(x => new RezervacijaInfo
-            {
-                User = new UsertoDisplay
-                {
-                    Ime = x.User.Ime,
-                    Prezime = x.User.Prezime,
-                    Adresa = x.User.Adresa,
-                    DatumRodjenja = x.User.DatumRodjenja,
-                    Email = x.User.Email
-                },
-                PonudaUser = new PonudaUserDisplay
-                {
-                    BrojOsoba = x.BrojOsoba,
-                    TipSobe = x.TipSobe,
-                    VrijemePlacanja = x.VrijemePlacanja,
-                    NazivPonuda = x.Ponuda.Naslov,
-                    Cijena = x.Cijena,
-                    IsCanceled = x.IsCanceled
-                },
-                DatumOd = x.Ponuda.DatumPolaska,
-                DatumDo = x.Ponuda.DatumPovratka
-            }).FirstOrDefault();
-
-            return result;
-        }
+        
 
         public List<RoleToDisplay> GetRoles(int userId = 0)
         {
@@ -104,22 +87,6 @@ namespace travelAworld.Services
             }).FirstOrDefault();
 
             return user;
-        }
-
-        public List<UsertoDisplay> GetUsersFromTrip(int ponudaId)
-        {
-            var users = _context.PonudaUser.Include(x => x.User).Where(x => x.PonudaId == ponudaId).Select(x => new UsertoDisplay
-            {
-                Id = x.Id,
-                Username = x.User.UserName,
-                //Roles = _context.UserRoles.Include(c=>c.Role).Where(c=>c.UserId == x.Id).Select(c=>c.Role).ToList(),
-                Ime = x.User.Ime,
-                Prezime = x.User.Prezime,
-                Adresa = x.User.Adresa,
-                Email = x.User.Email,
-            }).ToList();
-
-            return users;
         }
 
         public async Task UpdateRole(int userId, string roleName)
@@ -182,8 +149,6 @@ namespace travelAworld.Services
               .Take(queryParams.PageSize)
               .ToList()
             };
-
-
 
             return result;
         }

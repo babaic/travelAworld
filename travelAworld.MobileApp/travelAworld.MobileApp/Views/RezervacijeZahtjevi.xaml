@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="travelAworld.MobileApp.Views.RezervacijeZahtjevi">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="listaRezervacija"
+                      ItemSelected="OnListViewItemSelected"
+                      HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="20,35,20,20" Orientation="Horizontal">
+                                <Image Source="{Binding Slike[0]}" HeightRequest="100" WidthRequest="100" BackgroundColor="LimeGreen"/>
+                                <StackLayout>
+                                    <Label Text="{Binding Naziv}" TextColor="DarkBlue" FontSize="Medium" FontAttributes="Bold"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Korisnik:" FontSize="Medium" FontAttributes="Bold"/>
+                                        <Label Text="{Binding KorisnikIznajmio}" FontSize="Medium" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Datum rezervacije:" FontSize="Medium" FontAttributes="Bold"/>
+                                        <Label Text="{Binding DatumRezervacije}" FontSize="Medium" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Check in:" FontSize="Medium" FontAttributes="Bold"/>
+                                        <Label Text="{Binding CheckIn}" FontSize="Medium" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Check out:" FontSize="Medium" FontAttributes="Bold"/>
+                                        <Label Text="{Binding CheckOut}" FontSize="Medium" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Adresa:" FontSize="Medium" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Adresa}" FontSize="Medium" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

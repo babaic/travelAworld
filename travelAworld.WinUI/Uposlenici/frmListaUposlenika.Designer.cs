@@ -259,8 +259,7 @@
             this.dropFunkcija.Items.AddRange(new object[] {
             "Bilo koja",
             "Administrator",
-            "Agent",
-            "Vodić"});
+            "Uposlenik"});
             this.dropFunkcija.Location = new System.Drawing.Point(551, 76);
             this.dropFunkcija.Name = "dropFunkcija";
             this.dropFunkcija.Size = new System.Drawing.Size(121, 24);

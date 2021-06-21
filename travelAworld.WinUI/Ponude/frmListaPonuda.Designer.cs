@@ -33,16 +33,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvPonude = new System.Windows.Forms.DataGridView();
-            this.btnPrevious = new System.Windows.Forms.Button();
             this.txtUkupno = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtPageCounter = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.pretragaDrzava = new System.Windows.Forms.ComboBox();
+            this.pretragaGrad = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pretragaDatum = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnPretragaPonisti = new System.Windows.Forms.Button();
             this.checkPrikaziIzbrisane = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -114,19 +108,6 @@
             this.dgvPonude.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPonude_CellCClick);
             this.dgvPonude.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPonude_CellDoubleClick);
             // 
-            // btnPrevious
-            // 
-            this.btnPrevious.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(49)))), ((int)(((byte)(58)))));
-            this.btnPrevious.FlatAppearance.BorderSize = 0;
-            this.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrevious.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnPrevious.Location = new System.Drawing.Point(1009, 724);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(75, 23);
-            this.btnPrevious.TabIndex = 33;
-            this.btnPrevious.Text = "<<";
-            this.btnPrevious.UseVisualStyleBackColor = false;
-            // 
             // txtUkupno
             // 
             this.txtUkupno.AutoSize = true;
@@ -146,49 +127,16 @@
             this.label4.TabIndex = 31;
             this.label4.Text = "Ukupno:";
             // 
-            // txtPageCounter
+            // pretragaGrad
             // 
-            this.txtPageCounter.AutoSize = true;
-            this.txtPageCounter.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.txtPageCounter.Location = new System.Drawing.Point(963, 725);
-            this.txtPageCounter.Name = "txtPageCounter";
-            this.txtPageCounter.Size = new System.Drawing.Size(21, 22);
-            this.txtPageCounter.TabIndex = 30;
-            this.txtPageCounter.Text = "1";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label3.Location = new System.Drawing.Point(867, 725);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 22);
-            this.label3.TabIndex = 29;
-            this.label3.Text = "Stranica:";
-            // 
-            // btnNext
-            // 
-            this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(49)))), ((int)(((byte)(58)))));
-            this.btnNext.FlatAppearance.BorderSize = 0;
-            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNext.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnNext.Location = new System.Drawing.Point(1090, 724);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
-            this.btnNext.TabIndex = 28;
-            this.btnNext.Text = ">>";
-            this.btnNext.UseVisualStyleBackColor = false;
-            // 
-            // pretragaDrzava
-            // 
-            this.pretragaDrzava.FormattingEnabled = true;
-            this.pretragaDrzava.Items.AddRange(new object[] {
+            this.pretragaGrad.FormattingEnabled = true;
+            this.pretragaGrad.Items.AddRange(new object[] {
             "Bilo koja"});
-            this.pretragaDrzava.Location = new System.Drawing.Point(100, 93);
-            this.pretragaDrzava.Name = "pretragaDrzava";
-            this.pretragaDrzava.Size = new System.Drawing.Size(121, 24);
-            this.pretragaDrzava.TabIndex = 34;
-            this.pretragaDrzava.SelectedIndexChanged += new System.EventHandler(this.drzavaChanged);
+            this.pretragaGrad.Location = new System.Drawing.Point(100, 93);
+            this.pretragaGrad.Name = "pretragaGrad";
+            this.pretragaGrad.Size = new System.Drawing.Size(121, 24);
+            this.pretragaGrad.TabIndex = 34;
+            this.pretragaGrad.SelectedIndexChanged += new System.EventHandler(this.drzavaChanged);
             // 
             // label1
             // 
@@ -196,27 +144,9 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.label1.Location = new System.Drawing.Point(17, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 22);
+            this.label1.Size = new System.Drawing.Size(59, 22);
             this.label1.TabIndex = 35;
-            this.label1.Text = "Država";
-            // 
-            // pretragaDatum
-            // 
-            this.pretragaDatum.Location = new System.Drawing.Point(409, 95);
-            this.pretragaDatum.Name = "pretragaDatum";
-            this.pretragaDatum.Size = new System.Drawing.Size(200, 22);
-            this.pretragaDatum.TabIndex = 36;
-            this.pretragaDatum.ValueChanged += new System.EventHandler(this.datumChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.8F);
-            this.label2.Location = new System.Drawing.Point(245, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 22);
-            this.label2.TabIndex = 37;
-            this.label2.Text = "Datum polaska";
+            this.label1.Text = "Grad";
             // 
             // btnPretragaPonisti
             // 
@@ -260,16 +190,10 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.checkPrikaziIzbrisane);
             this.Controls.Add(this.btnPretragaPonisti);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.pretragaDatum);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pretragaDrzava);
-            this.Controls.Add(this.btnPrevious);
+            this.Controls.Add(this.pretragaGrad);
             this.Controls.Add(this.txtUkupno);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtPageCounter);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -293,16 +217,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvPonude;
-        private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Label txtUkupno;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label txtPageCounter;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.ComboBox pretragaDrzava;
+        private System.Windows.Forms.ComboBox pretragaGrad;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker pretragaDatum;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnPretragaPonisti;
         private System.Windows.Forms.CheckBox checkPrikaziIzbrisane;
         private System.Windows.Forms.Label label6;

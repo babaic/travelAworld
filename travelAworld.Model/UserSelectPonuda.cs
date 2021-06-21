@@ -9,8 +9,5 @@ namespace travelAworld.Model
     {
         public int UserId { get; set; }
         public double Cijena { get; set; }
-        public string TipSobe { get; set; }
-        public int BrojOsoba { get; set; }
-
     }
 }

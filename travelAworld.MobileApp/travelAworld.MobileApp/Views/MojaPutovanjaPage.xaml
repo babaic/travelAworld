@@ -4,11 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Title="Moja putovanja"
+             Title="Moje iznajmljene nekretnine"
              x:Class="travelAworld.MobileApp.Views.MojaPutovanjaPage">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="listaPutovanja"
+            <ListView x:Name="listaNekretnina"
+                        ItemSelected="OnListViewItemSelected"
                         HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -23,10 +24,19 @@
                                     <ColumnDefinition Width="40*"/>
                                     <ColumnDefinition Width="40*"/>
                                 </Grid.ColumnDefinitions>
-
-                                <Image Grid.RowSpan="2" Grid.Column="0" Source="destinationFlag.png" HeightRequest="32"/>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Naslov}"/>
-                                
+                                <Image Source="{Binding Slike[0]}" Aspect="AspectFill" HeightRequest="60"/>
+                                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                                    <Label Text="{Binding Naziv}"/>
+                                    <Label Text="{Binding Status}" BackgroundColor="{Binding Boja}"/>
+                                </StackLayout>
+                                <Button x:Name="btnRezervisi" 
+                                        Grid.Row="0" Grid.Column="2"
+                                        Clicked="ocijeniRezervaciju"
+                                        Text="{Binding Ocjena}"
+                                        BackgroundColor="#39E0A3"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Center"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

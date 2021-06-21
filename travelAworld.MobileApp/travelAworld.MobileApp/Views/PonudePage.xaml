@@ -14,7 +14,45 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar TextChanged="SearchBar_TextChanged"  Placeholder="Traži putovanja..."/>
+            <Picker x:Name="pickerKategorija"
+        Title="Odaberi kategoriju">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Stan</x:String>
+                        <x:String>Kuca</x:String>
+                        <x:String>Vikendica</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Picker x:Name="pickerGrad"
+        Title="Odaberi grad">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Sarajevo</x:String>
+                        <x:String>Mostar</x:String>
+                        <x:String>Zenica</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Entry x:Name="CijenaDo" Placeholder="Cijena do"></Entry>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnPretraga" 
+                                        Grid.Row="0" Grid.Column="2"
+                                        Clicked="btnPretraga_Clicked"
+                                        Text="Pretraga"
+                                        BackgroundColor="#39E0A3"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Center"/>
+                <Button x:Name="btnPonisti" 
+                                        Grid.Row="0" Grid.Column="2"
+                                        Clicked="btnPonisti_Clicked_1"
+                                        Text="Poništi"
+                                        BackgroundColor="DarkRed"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Center"/>
+            </StackLayout>
             <StackLayout Margin="20,0,20,0">
                 <ListView x:Name="listaPonuda" ItemsSource="{Binding Ponude}"
                       ItemSelected="OnListViewItemSelected"
@@ -24,7 +62,7 @@
                             <ViewCell>
                                 <StackLayout Margin="20,35,20,20">
                                     <Image Source="{Binding Slike[0]}" Aspect="AspectFill" HeightRequest="200" BackgroundColor="red"/>
-                                    <Label Text="{Binding Naslov}" TextColor="#39E0A3" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Naziv}" TextColor="#39E0A3" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

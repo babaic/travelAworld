@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using travelAworld.Model;
 using travelAworld.MobileApp.Models;
+using eRent.Model;
 
 namespace travelAworld.MobileApp.Views
 {
@@ -15,16 +16,17 @@ namespace travelAworld.MobileApp.Views
     public partial class KupiPonudu : ContentPage
     {
         private readonly APIService _service = new APIService("uplata/pay");
-        private readonly APIService _servicePonudaUser = new APIService("ponuda/ponudauser");
+        private readonly APIService _servicePonudaUser = new APIService("nekretnina/ponudauser");
         private double _amount { get; set; }
-        private PonudaDetails _ponuda;
+        private NekretninaToDisplayVM _ponuda;
         private UserSelectPonuda _userSelectPonuda;
+        DateTime MinDate = DateTime.Now;
 
         public KupiPonudu()
         {
             InitializeComponent();
         }
-        public KupiPonudu(PonudaDetails ponuda, UserSelectPonuda userSelectPonuda)
+        public KupiPonudu(NekretninaToDisplayVM ponuda, UserSelectPonuda userSelectPonuda)
         {
             InitializeComponent();
             cijena.Text = userSelectPonuda.Cijena.ToString()+" KM";
@@ -34,15 +36,9 @@ namespace travelAworld.MobileApp.Views
         }
         async void kupiPonudu(object sender, EventArgs args)
         {
-            //PaymentCardAdd card = new PaymentCardAdd
-            //{
-            //    BrojKartice = Int32.Parse(brojKartice.Text),
-            //    Mjesec = Int32.Parse(mjesec.Text),
-            //    Godina = Int32.Parse(godina.Text),
-            //    CVV = Int32.Parse(cvv.Text),
-            //    Amount = Convert.ToInt64(_amount),
-            //    Desc = _ponuda.Naslov+"_"+_userSelectPonuda.UserId
-            //};
+            var datumAdd = datum.Date;
+            var prijavaAdd = prijava.Time.ToString();
+            var odjavaAdd = odjava.Time.ToString();
 
             PaymentCardAdd card = new PaymentCardAdd
             {
@@ -51,7 +47,7 @@ namespace travelAworld.MobileApp.Views
                 Godina = Int32.Parse("21"),
                 CVV = Int32.Parse("123"),
                 Amount = Convert.ToInt64(_amount),
-                Desc = _ponuda.Naslov + "_" + _userSelectPonuda.UserId
+                Desc = _ponuda.Naziv + "_" + _userSelectPonuda.UserId
 
             };
 
@@ -67,13 +63,14 @@ namespace travelAworld.MobileApp.Views
                 //dodaj u bazu podatke 
                 var ponudaUser = new PonudaUserAdd
                 {
-                    BrojOsoba = _userSelectPonuda.BrojOsoba,
-                    TipSobe = _userSelectPonuda.TipSobe,
                     Cijena = _userSelectPonuda.Cijena,
                     UserId = _userSelectPonuda.UserId,
-                    PonudaId = _ponuda.PonudaId,
-                    TransakcijaId = result.ChargeId
-                };
+                    PonudaId = _ponuda.NekretninaId,
+                    TransakcijaId = result.ChargeId,
+                    DatumPrijave = datum.Date,
+                    VrijemePrijave = prijava.Time.ToString(),
+                    VrijemeOdjave = odjava.Time.ToString()
+            };
                 _servicePonudaUser.InsertA<dynamic>(ponudaUser);
 
                 await Navigation.PushAsync(new PaymentMsgPage(true));

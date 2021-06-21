@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="travelAworld.MobileApp.Views.OcijeniPonuduPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Ocijeni nekretninu sa ocjenom od 1 do 10"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="ocjena" Placeholder="Ocjena"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button x:Name="btnOcijeni" 
+                                        Grid.Row="0" Grid.Column="2"
+                                        Clicked="ocijeniRezervaciju"
+                                        Text="Ocijeni"
+                                        BackgroundColor="#39E0A3"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Center"/>
+                <Button x:Name="btnOtkazi" 
+                                        Grid.Row="0" Grid.Column="2"
+                                        Clicked="btnOtkazi_Clicked"
+                                        Text="Otkazi rezervaciju"
+                                        BackgroundColor="IndianRed"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Center"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

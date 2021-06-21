@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eRent.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,15 +14,17 @@ namespace travelAworld.WinUI.Ponude
 {
     public partial class frmAddEditPonuda : Form
     {
-        private readonly APIService _getLokacija = new APIService("ponuda/getlokacija");
-        private readonly APIService _dodajPonudu = new APIService("ponuda/dodajponudu");
-        private readonly APIService _updatePonuda = new APIService("ponuda/updateponuda");
-        private readonly APIService _getPonuda = new APIService("ponuda/getponuda");
+        private readonly APIService _getLokacija = new APIService("Nekretnina/GetGrad");
+        private readonly APIService _dodajPonudu = new APIService("Nekretnina/nova");
+        private readonly APIService _getKategorije = new APIService("Nekretnina/GetKategorije");
+        private readonly APIService _getPonuda = new APIService("Nekretnina/GetNekretninaById");
+        private readonly APIService _updatePonuda = new APIService("Nekretnina/updatenekretnina");
+
         private readonly APIService _getVodici = new APIService("ponuda/getvodici");
         private readonly APIService _obavijest = new APIService("ponuda/dodajobavijest");
         private readonly APIService _otkaziPonudu = new APIService("ponuda/otkaziponudu");
         bool locationAdded = false; //prevent loading x times same data
-        PonudaToDisplay ponudaEdit;
+        NekretninaToDisplayVM ponudaEdit;
 
         List<int> izabraniVodici = new List<int>();
 
@@ -52,27 +55,18 @@ namespace travelAworld.WinUI.Ponude
         private async void loadData()
         {
 
-            var getLokacija = _getLokacija.Get<List<Model.LokacijaToDisplay>>(null);
-            
-            dropLokacija.ValueMember = "LokacijaId";
-            dropLokacija.DisplayMember = "FullLokacija";
+            var getLokacija = _getLokacija.Get<List<GradToDisplayVM>>(null);
+            var getKategorija = _getKategorije.Get<List<KategorijaToDisplayVM>>(null);
+
+            dropLokacija.ValueMember = "GradId";
+            dropLokacija.DisplayMember = "Naziv";
             dropLokacija.DataSource = getLokacija;
             dropLokacija.SelectedIndex = dropLokacija.Items.Count-1;
 
-
-            checkedListVodici.DisplayMember = "Username";
-            checkedListVodici.ValueMember = "Id";
-
-            if (!locationAdded)
-            {
-                var getVodici = _getVodici.Get<List<UsertoDisplay>>(null);
-                int index = 0;
-                foreach (var i in getVodici)
-                {
-                    checkedListVodici.Items.Insert(index, new UsertoDisplay { Username = i.Ime + " " + i.Prezime, Id = i.Id });
-                    index++;
-                }
-            }
+            dropKategorija.ValueMember = "KategorijaId";
+            dropKategorija.DisplayMember = "Naziv";
+            dropKategorija.DataSource = getKategorija;
+            dropKategorija.SelectedIndex = dropKategorija.Items.Count - 1;
 
             //edit
             if (id.HasValue)
@@ -80,26 +74,28 @@ namespace travelAworld.WinUI.Ponude
                 //dropLokacija.Enabled = false;
                 panelBrisiPonudu.Visible = true;
 
-                ponudaEdit = await _getPonuda.GetById<PonudaToDisplay>(id);
+                ponudaEdit = await _getPonuda.GetById<NekretninaToDisplayVM>(id);
 
-                if (!ponudaEdit.IsActive)
-                {
-                    btnBrisiPonudu.Enabled = false;
-                    btnSaveForm.Enabled = false;
-                    lblObrisano.Visible = true;
-                }
+                //if (!ponudaEdit.IsActive)
+                //{
+                //    btnBrisiPonudu.Enabled = false;
+                //    btnSaveForm.Enabled = false;
+                //    lblObrisano.Visible = true;
+                //}
 
-                txtIme.Text = ponudaEdit.Naslov;
+                txtIme.Text = ponudaEdit.Naziv;
                 rtxtOpis.Text = ponudaEdit.Opis;
-                dateDatumPolaska.Value = ponudaEdit.DatumPolaska;
-                dateDatumPovratka.Value = ponudaEdit.DatumPovratka;
                 txtCijena.Text = ponudaEdit.Cijena.ToString();
-                rtxtCijenaUkljuceno.Text = ponudaEdit.CijenaUkljuceno;
-                rtxtCijenaNijeUkljuceno.Text = ponudaEdit.CijenaIskljuceno;
-                rtxtNapomene.Text = ponudaEdit.Napomena;
-                txtHotel.Text = ponudaEdit.Hotel;
-                txtKoordinate1.Text = ponudaEdit.Koordinate1;
-                txtKoordinate2.Text = ponudaEdit.Koordinate2;
+                txtAdresa.Text = ponudaEdit.Adresa;
+                txgGodina.Text = ponudaEdit.GodinaIzgradnje.ToString();
+                txtSprat.Text = ponudaEdit.Sprat.ToString();
+                txtBrojEtaza.Text = ponudaEdit.BrojEtaza.ToString();
+                txtKvadratura.Text = ponudaEdit.Kvadratura.ToString();
+                cbGrijanje.Checked = ponudaEdit.Grijanje == "DA" ? true : false;
+                cbKlima.Checked = ponudaEdit.PosjedujeKlimu;
+                cbLift.Checked = ponudaEdit.PosjedujeLift;
+                cbRezije.Checked = ponudaEdit.UkljuceneRezije;
+
                 {
                     img1.Enabled = false;
                     img2.Enabled = false;
@@ -108,19 +104,8 @@ namespace travelAworld.WinUI.Ponude
                     img5.Enabled = false;
                     img6.Enabled = false;
                 }
-                
-
-                for (var i = 0; i < checkedListVodici.Items.Count; i++)
-                {
-                    foreach (var vodic in ponudaEdit.Vodic)
-                    {
-                        if((checkedListVodici.Items[i] as UsertoDisplay).Id == vodic.Id)
-                        {
-                            checkedListVodici.SetItemChecked(i, true);
-                        }
-                    }
-                }
-                dropLokacija.Text = ponudaEdit.Lokacija;
+                dropLokacija.Text = ponudaEdit.Grad;
+                dropKategorija.Text = ponudaEdit.KategorijaNekretnina;
             }
 
         }
@@ -144,14 +129,6 @@ namespace travelAworld.WinUI.Ponude
                 return;
 
             
-            for (var i = 0; i < checkedListVodici.Items.Count; i++)
-            {
-                if (checkedListVodici.GetItemChecked(i))
-                {
-                    izabraniVodici.Add((checkedListVodici.Items[i] as UsertoDisplay).Id);
-                }
-            }
-
             List<string> slike = new List<string>();
             if (img1.TextLength > 5)
             {
@@ -178,24 +155,26 @@ namespace travelAworld.WinUI.Ponude
                 slike.Add(img6.Text);
             }
 
+            // add ponuda
             if (!id.HasValue)
             {
-                PonudaToAdd ponuda = new PonudaToAdd
+                NekretninaToAddVM ponuda = new NekretninaToAddVM
                 {
                     Cijena = Int32.Parse(txtCijena.Text),
-                    CijenaIskljuceno = rtxtCijenaNijeUkljuceno.Text,
-                    CijenaUkljuceno = rtxtCijenaUkljuceno.Text,
-                    DatumPolaska = dateDatumPolaska.Value,
-                    DatumPovratka = dateDatumPovratka.Value,
-                    Hotel = txtHotel.Text,
-                    Napomena = rtxtNapomene.Text,
-                    Naslov = txtIme.Text,
+                    Naziv = txtIme.Text,
                     Opis = rtxtOpis.Text,
-                    LokacijaId = Int32.Parse(dropLokacija.SelectedValue.ToString()),
-                    VodicId = izabraniVodici,
+                    GradId = Int32.Parse(dropLokacija.SelectedValue.ToString()),
+                    KategorijaNekretnineId = Int32.Parse(dropKategorija.SelectedValue.ToString()),
+                    Adresa = txtAdresa.Text,
+                    GodinaIzgradnje = Int32.Parse(txgGodina.Text),
+                    Sprat = Int32.Parse(txtSprat.Text),
+                    BrojEtaza = Int32.Parse(txtBrojEtaza.Text),
+                    Kvadratura = Int32.Parse(txtKvadratura.Text),
+                    Grijanje = cbGrijanje.Checked ? "DA" : "NE",
+                    PosjedujeKlimu = cbKlima.Checked,
+                    PosjedujeLift = cbLift.Checked,
+                    UkljuceneRezije = cbRezije.Checked,
                     Slike = slike,
-                    Koordinate1 = txtKoordinate1.Text,
-                    Koordinate2 = txtKoordinate2.Text
                 };
 
                 await _dodajPonudu.Insert<dynamic>(ponuda);
@@ -203,60 +182,26 @@ namespace travelAworld.WinUI.Ponude
             else
             {
                 //edit
-                PonudaToAdd ponuda = new PonudaToAdd
+                NekretninaToAddVM nekretnina = new NekretninaToAddVM
                 {
-                    Cijena = Int32.Parse(txtCijena.Text),
-                    CijenaIskljuceno = rtxtCijenaNijeUkljuceno.Text,
-                    CijenaUkljuceno = rtxtCijenaUkljuceno.Text,
-                    DatumPolaska = dateDatumPolaska.Value,
-                    DatumPovratka = dateDatumPovratka.Value,
-                    Hotel = txtHotel.Text,
-                    Napomena = rtxtNapomene.Text,
-                    Naslov = txtIme.Text,
+                    Cijena = Double.Parse(txtCijena.Text),
+                    Naziv = txtIme.Text,
                     Opis = rtxtOpis.Text,
-                    LokacijaId = Int32.Parse(dropLokacija.SelectedValue.ToString()),
-                    VodicId = izabraniVodici,
+                    GradId = Int32.Parse(dropLokacija.SelectedValue.ToString()),
+                    KategorijaNekretnineId = 1,
+                    Adresa = txtAdresa.Text,
+                    GodinaIzgradnje = Int32.Parse(txgGodina.Text),
+                    Sprat = Int32.Parse(txtSprat.Text),
+                    BrojEtaza = Int32.Parse(txtBrojEtaza.Text),
+                    Kvadratura = Double.Parse(txtKvadratura.Text),
+                    Grijanje = cbGrijanje.Checked ? "DA" : "NE",
+                    PosjedujeKlimu = cbKlima.Checked,
+                    PosjedujeLift = cbLift.Checked,
+                    UkljuceneRezije = cbRezije.Checked,
+
                     //Slike = slike,
-                    Koordinate1 = txtKoordinate1.Text,
-                    Koordinate2 = txtKoordinate2.Text
                 };
-                await _updatePonuda.Update<dynamic>(id.Value, ponuda);
-
-                bool posaljiNotifikaciju = false;
-                string msg = "Došlo je do promjene u putovanju: ";
-
-                if(ponudaEdit.DatumPolaska != ponuda.DatumPolaska)
-                {
-                    posaljiNotifikaciju = true;
-                    msg += " Promijenjen je Datum polaska na " + ponuda.DatumPolaska;
-                }
-                if (ponudaEdit.DatumPovratka != ponuda.DatumPovratka)
-                {
-                    posaljiNotifikaciju = true;
-                    msg += " Promijenjen je Datum povratka na " + ponuda.DatumPolaska;
-                }
-                if (ponudaEdit.Hotel != ponuda.Hotel)
-                {
-                    posaljiNotifikaciju = true;
-                    msg += " Promijenjen je Hotel - " + ponuda.Hotel;
-                }
-                if (ponudaEdit.Napomena != ponuda.Napomena)
-                {
-                    posaljiNotifikaciju = true;
-                    msg += " N A P O M E N A: " + ponuda.Napomena;
-                }
-
-                if (posaljiNotifikaciju)
-                {
-                    var obavijest = new ObavijestAdd
-                    {
-                        PonudaId = id.Value,
-                        Tekst = msg,
-                        Type = "notifikacija"
-                    };
-
-                    await _obavijest.Insert<object>(obavijest);
-                }
+                await _updatePonuda.Update<dynamic>(id.Value, nekretnina);
 
             }
             MessageBox.Show("Ponuda dodana", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -279,26 +224,6 @@ namespace travelAworld.WinUI.Ponude
             if (string.IsNullOrEmpty(txtCijena.Text))
             {
                 showMsg("Cijena Obavezno polje"); return false;
-            }
-            if (string.IsNullOrEmpty(rtxtCijenaNijeUkljuceno.Text))
-            {
-                showMsg("Cijena nije uključeno je Obavezno polje"); return false;
-            }
-            if (string.IsNullOrEmpty(rtxtCijenaUkljuceno.Text))
-            {
-                showMsg("Cijena uključeno je Obavezno polje"); return false;
-            }
-            if (string.IsNullOrEmpty(txtHotel.Text))
-            {
-                showMsg("Naziv hotela je Obavezno polje"); return false;
-            }
-            if (string.IsNullOrEmpty(txtKoordinate1.Text))
-            {
-                showMsg("Koordinate 1 je Obavezno polje"); return false;
-            }
-            if (string.IsNullOrEmpty(txtKoordinate2.Text))
-            {
-                showMsg("Koordinate 2 je Obavezno polje"); return false;
             }
             if (string.IsNullOrEmpty(img1.Text) && id == null)
             {

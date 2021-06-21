@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using eRent.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -48,13 +49,15 @@ namespace travelAworld.EF
 
 
         public DbSet<Drzava> Drzava { get; set; }
-        public DbSet<Lokacija> Lokacija { get; set; }
-        public DbSet<Ponuda> Ponuda { get; set; }
-        public DbSet<VodicPonuda> VodicPonuda { get; set; }
-        public DbSet<PonudaSlike> PonudaSlike { get; set; }
-        public DbSet<PonudaUser> PonudaUser { get; set; }
-        public DbSet<Obavijesti> Obavijesti { get; set; }
-        public DbSet<UserSearch> UserSearch { get; set; }
-        public DbSet<OtkazanaPonudaUser> OtkazanaPonudaUser { get; set; }
+        public DbSet<Grad> Grad { get; set; }
+        public DbSet<KategorijaNekretnina> KategorijaNekretnina { get; set; }
+        public DbSet<Nekretnina> Nekretnina { get; set; }
+        public DbSet<Notifikacija> Notifikacija { get; set; }
+        public DbSet<Novost> Novost { get; set; }
+        public DbSet<Ocjena> Ocjena { get; set; }
+        public DbSet<Pretplata> Pretplata { get; set; }
+        public DbSet<Rezervacija> Rezervacija { get; set; }
+        public DbSet<Ugovor> Ugovor { get; set; }
+        public DbSet<NekretninaSlike> NekretninaSlike { get; set; }
     }
 }

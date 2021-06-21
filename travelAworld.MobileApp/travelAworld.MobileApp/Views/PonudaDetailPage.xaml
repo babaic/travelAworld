@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              mc:Ignorable="d"
              x:Class="travelAworld.MobileApp.Views.PonudaDetailPage"
              Title="{Binding Title}"
@@ -11,37 +10,13 @@
 
 
 
-    <ScrollView InputTransparent="True">
+    <ScrollView>
         <Frame CornerRadius="5" Margin="10,10,10,10">
             <StackLayout BackgroundColor="AliceBlue" Padding="10">
-                <Label Text="{Binding Naslov}" TextColor="#39E0A3" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <Label Text="{Binding Naziv}" TextColor="#39E0A3" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
+
                 <!--slika-->
-                <AbsoluteLayout>
-                    <CarouselView ItemsSource="{Binding Slike}" IndicatorView="indicatorView" HeightRequest="260">
-                        <CarouselView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout HeightRequest="260">
-
-
-                                    <Image Source="{Binding}"
-                                           HeightRequest="250"
-                                           MinimumHeightRequest="250"
-                                           WidthRequest="500"
-                                           Aspect="AspectFill"
-                                           HorizontalOptions="Center" />
-                                </StackLayout>
-                            </DataTemplate>
-                        </CarouselView.ItemTemplate>
-                    </CarouselView>
-
-
-                    <IndicatorView x:Name="indicatorView"
-                   IndicatorColor="LightGray"
-                   SelectedIndicatorColor="DarkGray"
-                   AbsoluteLayout.LayoutBounds=".5,.98,100,25"
-                   AbsoluteLayout.LayoutFlags="PositionProportional"
-                   HorizontalOptions="Center" />
-                </AbsoluteLayout>
+                <Image x:Name="backgroundImage" Source="{Binding Slike[0]}" AbsoluteLayout.LayoutBounds="0,0,1,1"   AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"/>
                 <!--slika-->
 
                 <StackLayout>
@@ -52,13 +27,7 @@
                 </StackLayout>
                 <StackLayout>
                     <Grid Margin="10, 10, 10, 10">
-                        <Label Text="Datum" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
-                        <Label Text="{Binding DatumOdDo}" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End"/>
-                    </Grid>
-                </StackLayout>
-                <StackLayout>
-                    <Grid Margin="10, 10, 10, 10">
-                        <Label Text="O destinaciji" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        <Label Text="Opis" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
                     </Grid>
                 </StackLayout>
                 <StackLayout>
@@ -66,79 +35,65 @@
                         <Label Text="{Binding Opis}" TextColor="Black" HorizontalTextAlignment="Start"/>
                     </Grid>
                 </StackLayout>
+                
                 <StackLayout>
-                    <Grid Margin="10, 10, 10, 10">
-                        <Label Text="Hotel" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
-                        <Label Text="{Binding Hotel}" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End"/>
+                    <Grid RowSpacing="0" Margin="10, 10, 10, 10">
+                        <Label Text="Broj etaža" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        <Label Text="{Binding BrojEtaza}" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End"/>
                     </Grid>
                 </StackLayout>
 
-                <StackLayout HeightRequest="350">
-                    <Label Margin="10, 10, 10, 10" Text="Lokacija" FontAttributes="Bold" TextColor="#39E0A3"/>
-                        <map:Map x:Name="MyMap" MapType="Street" HasZoomEnabled="True">
-                            
-                        </map:Map>
-                </StackLayout>
-
-                <!--<StackLayout>
-                    <Grid Margin="10, 10, 10, 10">
-                        <Label Text="Program putovanja" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
-                    </Grid>
-                </StackLayout>
                 <StackLayout>
-                    <Grid Margin="10, 10, 10, 10">
-                        <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pulvinar commodo purus, et semper urna gravida et. Donec molestie nunc leo, euismod dapibus lacus faucibus vel. Integer efficitur metus non risus pretium molestie." TextColor="Black" HorizontalTextAlignment="Start"/>
+                    <Grid RowSpacing="0" Margin="10, 10, 10, 10">
+                        <Label Text="Sprat" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        <Label Text="{Binding Sprat}" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End"/>
                     </Grid>
-                </StackLayout>-->
+                </StackLayout>
 
-                <StackLayout BackgroundColor="White" Margin="0">
-                    <StackLayout>
-                        <Grid Margin="10, 10, 10, 10">
-                            <Label Text="Odaberi sobu" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
-                        </Grid>
-                    </StackLayout>
-                    <StackLayout>
-                        <Grid Margin="10, 10, 10, 10">
-                            <Picker x:Name="odaberiSoba"
-                                Title="Izbor soba"
-                                TitleColor="Red"
-                                SelectedIndexChanged="GetSoba">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>Jednokrevetna</x:String>
-                                        <x:String>Dvokrevetna</x:String>
-                                        <x:String>Trokrevetna</x:String>
-                                        <x:String>Četverokrevetna</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
-                        </Grid>
-                    </StackLayout>
-                    <StackLayout>
-                        <Grid Margin="10, 10, 10, 10">
-                            <Label Text="Broj osoba" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
-                        </Grid>
-                    </StackLayout>
-                    <StackLayout>
-                        <Grid Margin="10, 10, 10, 10">
-                            <Picker x:Name="odaberiBrojOsoba"
-                                Title="Broj osoba"
-                                TitleColor="Red"
-                                SelectedIndexChanged="GetBrOsoba"    
-                                    >
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>1</x:String>
-                                        <x:String>2</x:String>
-                                        <x:String>3</x:String>
-                                        <x:String>4</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
-                        </Grid>
-                    </StackLayout>
-                    <StackLayout>
-                        <Button x:Name="btnRezervisi" 
+                <StackLayout>
+                    <Grid RowSpacing="0" Margin="10, 10, 10, 10">
+                        <Label Text="Adresa" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        <Label Text="{Binding Adresa}" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End"/>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout>
+                    <Grid RowSpacing="0" Margin="10, 10, 10, 10">
+                        <Label Text="Grad" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        <Label Text="{Binding Grad}" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End"/>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout>
+                    <Grid RowSpacing="0" Margin="10, 10, 10, 10">
+                        <Label Text="Kvadratura" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        <Label Text="{Binding Kvadratura}" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End"/>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout>
+                    <Grid RowSpacing="0" Margin="10, 10, 10, 10">
+                        <Label Text="Klima" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        <CheckBox IsChecked="{Binding PosjedujeKlimu}" HorizontalOptions="End"/>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout>
+                    <Grid RowSpacing="0" Margin="10, 10, 10, 10">
+                        <Label Text="Lift" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        <CheckBox IsChecked="{Binding PosjedujeLift}" HorizontalOptions="End"/>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout>
+                    <Grid RowSpacing="0" Margin="10, 10, 10, 10">
+                        <Label Text="Uključene režije" FontAttributes="Bold" TextColor="#39E0A3" HorizontalTextAlignment="Start"/>
+                        <CheckBox IsChecked="{Binding UkljuceneRezije}" HorizontalOptions="End"/>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout>
+                    <Button x:Name="btnRezervisi" 
                                 Clicked="rezervisiPonudu"
                                 Text="Rezerviši"
                                 WidthRequest="500"
@@ -147,14 +102,7 @@
                                 VerticalOptions="CenterAndExpand"
                                 HorizontalOptions="Center"
                                  />
-                    </StackLayout>
-
                 </StackLayout>
-
-
-
-
-
 
             </StackLayout>
         </Frame>

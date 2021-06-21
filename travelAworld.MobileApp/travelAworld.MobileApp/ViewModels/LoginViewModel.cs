@@ -39,8 +39,6 @@ namespace travelAworld.MobileApp.ViewModels
 
             UserToLogin userToLogin = new UserToLogin
             {
-                //Username = "haris.babaic",
-                //Password = "test"
                 Username = Username,
                 Password = Password
             };

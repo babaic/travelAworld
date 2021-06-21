@@ -37,11 +37,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBrKorisnika = new System.Windows.Forms.Label();
-            this.txtBrRezervacija = new System.Windows.Forms.Label();
+            this.txtBrIzdatihStanova = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtBrDestinacija = new System.Windows.Forms.Label();
+            this.txtBrUgovori = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtBrPregleda = new System.Windows.Forms.Label();
+            this.txtBrTotalStanovi = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -81,7 +81,7 @@
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
             this.label5.Location = new System.Drawing.Point(50, 13);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 22);
+            this.label5.Size = new System.Drawing.Size(71, 20);
             this.label5.TabIndex = 1;
             this.label5.Text = "Statistika";
             // 
@@ -102,9 +102,9 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(298, 40);
+            this.label1.Size = new System.Drawing.Size(234, 33);
             this.label1.TabIndex = 38;
-            this.label1.Text = "TOP 3 Destinacije";
+            this.label1.Text = "TOP 3 nekretnine";
             // 
             // label2
             // 
@@ -112,7 +112,7 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(482, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(222, 40);
+            this.label2.Size = new System.Drawing.Size(180, 33);
             this.label2.TabIndex = 39;
             this.label2.Text = "Broj korisnika";
             // 
@@ -123,20 +123,20 @@
             this.txtBrKorisnika.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.txtBrKorisnika.Location = new System.Drawing.Point(482, 144);
             this.txtBrKorisnika.Name = "txtBrKorisnika";
-            this.txtBrKorisnika.Size = new System.Drawing.Size(74, 40);
+            this.txtBrKorisnika.Size = new System.Drawing.Size(60, 33);
             this.txtBrKorisnika.TabIndex = 40;
             this.txtBrKorisnika.Text = "128";
             // 
-            // txtBrRezervacija
+            // txtBrIzdatihStanova
             // 
-            this.txtBrRezervacija.AutoSize = true;
-            this.txtBrRezervacija.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBrRezervacija.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.txtBrRezervacija.Location = new System.Drawing.Point(826, 144);
-            this.txtBrRezervacija.Name = "txtBrRezervacija";
-            this.txtBrRezervacija.Size = new System.Drawing.Size(36, 40);
-            this.txtBrRezervacija.TabIndex = 42;
-            this.txtBrRezervacija.Text = "7";
+            this.txtBrIzdatihStanova.AutoSize = true;
+            this.txtBrIzdatihStanova.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBrIzdatihStanova.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.txtBrIzdatihStanova.Location = new System.Drawing.Point(826, 144);
+            this.txtBrIzdatihStanova.Name = "txtBrIzdatihStanova";
+            this.txtBrIzdatihStanova.Size = new System.Drawing.Size(30, 33);
+            this.txtBrIzdatihStanova.TabIndex = 42;
+            this.txtBrIzdatihStanova.Text = "7";
             // 
             // label6
             // 
@@ -144,20 +144,20 @@
             this.label6.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(826, 89);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(264, 40);
+            this.label6.Size = new System.Drawing.Size(335, 33);
             this.label6.TabIndex = 41;
-            this.label6.Text = "Broj rezervacija";
+            this.label6.Text = "Trenutno izdatih stanova";
             // 
-            // txtBrDestinacija
+            // txtBrUgovori
             // 
-            this.txtBrDestinacija.AutoSize = true;
-            this.txtBrDestinacija.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBrDestinacija.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.txtBrDestinacija.Location = new System.Drawing.Point(482, 313);
-            this.txtBrDestinacija.Name = "txtBrDestinacija";
-            this.txtBrDestinacija.Size = new System.Drawing.Size(74, 40);
-            this.txtBrDestinacija.TabIndex = 44;
-            this.txtBrDestinacija.Text = "128";
+            this.txtBrUgovori.AutoSize = true;
+            this.txtBrUgovori.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBrUgovori.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.txtBrUgovori.Location = new System.Drawing.Point(482, 313);
+            this.txtBrUgovori.Name = "txtBrUgovori";
+            this.txtBrUgovori.Size = new System.Drawing.Size(60, 33);
+            this.txtBrUgovori.TabIndex = 44;
+            this.txtBrUgovori.Text = "128";
             // 
             // label8
             // 
@@ -165,20 +165,20 @@
             this.label8.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(482, 258);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(265, 40);
+            this.label8.Size = new System.Drawing.Size(281, 33);
             this.label8.TabIndex = 43;
-            this.label8.Text = "Broj destinacija";
+            this.label8.Text = "Zaključenih ugovora";
             // 
-            // txtBrPregleda
+            // txtBrTotalStanovi
             // 
-            this.txtBrPregleda.AutoSize = true;
-            this.txtBrPregleda.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBrPregleda.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.txtBrPregleda.Location = new System.Drawing.Point(826, 313);
-            this.txtBrPregleda.Name = "txtBrPregleda";
-            this.txtBrPregleda.Size = new System.Drawing.Size(74, 40);
-            this.txtBrPregleda.TabIndex = 46;
-            this.txtBrPregleda.Text = "128";
+            this.txtBrTotalStanovi.AutoSize = true;
+            this.txtBrTotalStanovi.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBrTotalStanovi.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.txtBrTotalStanovi.Location = new System.Drawing.Point(826, 313);
+            this.txtBrTotalStanovi.Name = "txtBrTotalStanovi";
+            this.txtBrTotalStanovi.Size = new System.Drawing.Size(60, 33);
+            this.txtBrTotalStanovi.TabIndex = 46;
+            this.txtBrTotalStanovi.Text = "128";
             // 
             // label10
             // 
@@ -186,20 +186,20 @@
             this.label10.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(826, 258);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(237, 40);
+            this.label10.Size = new System.Drawing.Size(321, 33);
             this.label10.TabIndex = 45;
-            this.label10.Text = "Broj pregleda";
+            this.label10.Text = "Ukupno izdatih stanova";
             // 
             // frmStatistika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 715);
-            this.Controls.Add(this.txtBrPregleda);
+            this.Controls.Add(this.txtBrTotalStanovi);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtBrDestinacija);
+            this.Controls.Add(this.txtBrUgovori);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtBrRezervacija);
+            this.Controls.Add(this.txtBrIzdatihStanova);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtBrKorisnika);
             this.Controls.Add(this.label2);
@@ -227,11 +227,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label txtBrKorisnika;
-        private System.Windows.Forms.Label txtBrRezervacija;
+        private System.Windows.Forms.Label txtBrIzdatihStanova;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label txtBrDestinacija;
+        private System.Windows.Forms.Label txtBrUgovori;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label txtBrPregleda;
+        private System.Windows.Forms.Label txtBrTotalStanovi;
         private System.Windows.Forms.Label label10;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eRent.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace travelAworld.MobileApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PreporukePage : ContentPage
     {
-        private readonly APIService _service = new APIService("ponuda/getponude");
+        private readonly APIService _service = new APIService("nekretnina/preporuke");
         private PreporukeViewModel model = null;
         public PreporukePage()
         {
@@ -28,7 +29,7 @@ namespace travelAworld.MobileApp.Views
         }
         async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var ponuda = args.SelectedItem as PonudaToDisplay;
+            var ponuda = args.SelectedItem as NekretninaToDisplayVM;
             if (ponuda == null)
                 return;
 

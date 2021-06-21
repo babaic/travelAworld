@@ -34,7 +34,6 @@
             this.panelMainMenu = new System.Windows.Forms.Panel();
             this.btnOdjava = new System.Windows.Forms.Button();
             this.btnStatistika = new System.Windows.Forms.Button();
-            this.btnRezervacije = new System.Windows.Forms.Button();
             this.panelPonudeSubMenu = new System.Windows.Forms.Panel();
             this.btnListaPonuda = new System.Windows.Forms.Button();
             this.btnNovaPonuda = new System.Windows.Forms.Button();
@@ -53,7 +52,7 @@
             this.txtUserFullName = new System.Windows.Forms.Label();
             this.txtUserRole = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panelMainMenu.SuspendLayout();
@@ -63,7 +62,6 @@
             this.panelUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePic)).BeginInit();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -83,7 +81,6 @@
             this.panelMainMenu.AutoScroll = true;
             this.panelMainMenu.Controls.Add(this.btnOdjava);
             this.panelMainMenu.Controls.Add(this.btnStatistika);
-            this.panelMainMenu.Controls.Add(this.btnRezervacije);
             this.panelMainMenu.Controls.Add(this.panelPonudeSubMenu);
             this.panelMainMenu.Controls.Add(this.btnPonude);
             this.panelMainMenu.Controls.Add(this.panelKorisniciSubMenu);
@@ -120,31 +117,13 @@
             this.btnStatistika.ForeColor = System.Drawing.SystemColors.Control;
             this.btnStatistika.Image = global::travelAworld.WinUI.Properties.Resources.icons8_bar_chart_24;
             this.btnStatistika.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStatistika.Location = new System.Drawing.Point(0, 460);
+            this.btnStatistika.Location = new System.Drawing.Point(0, 415);
             this.btnStatistika.Name = "btnStatistika";
             this.btnStatistika.Size = new System.Drawing.Size(227, 45);
             this.btnStatistika.TabIndex = 20;
             this.btnStatistika.Text = "Statistika";
             this.btnStatistika.UseVisualStyleBackColor = false;
             this.btnStatistika.Click += new System.EventHandler(this.btnStatistika_Click);
-            // 
-            // btnRezervacije
-            // 
-            this.btnRezervacije.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(135)))), ((int)(((byte)(146)))));
-            this.btnRezervacije.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRezervacije.FlatAppearance.BorderSize = 0;
-            this.btnRezervacije.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRezervacije.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRezervacije.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRezervacije.Image = global::travelAworld.WinUI.Properties.Resources.icons8_calendar_23_24;
-            this.btnRezervacije.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRezervacije.Location = new System.Drawing.Point(0, 415);
-            this.btnRezervacije.Name = "btnRezervacije";
-            this.btnRezervacije.Size = new System.Drawing.Size(227, 45);
-            this.btnRezervacije.TabIndex = 12;
-            this.btnRezervacije.Text = "Rezervacije";
-            this.btnRezervacije.UseVisualStyleBackColor = false;
-            this.btnRezervacije.Click += new System.EventHandler(this.btnRezervacije_Click);
             // 
             // panelPonudeSubMenu
             // 
@@ -401,23 +380,23 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.pictureBox1);
+            this.panel5.Controls.Add(this.label1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(227, 100);
             this.panel5.TabIndex = 12;
             // 
-            // pictureBox1
+            // label1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::travelAworld.WinUI.Properties.Resources._38636c09_03eb_434b_82ec_341e5b0b939d_200x200;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(227, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(57, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 32);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "eRent";
             // 
             // panelChildForm
             // 
@@ -449,7 +428,7 @@
             this.panelUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePic)).EndInit();
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -463,12 +442,10 @@
         private System.Windows.Forms.Button btnNoviUposlenik;
         private System.Windows.Forms.Button btnListaUposlenika;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panelUser;
         private System.Windows.Forms.Panel panelMainMenu;
         private System.Windows.Forms.Panel panelUposleniciSubmenu;
         private System.Windows.Forms.Button btnStatistika;
-        private System.Windows.Forms.Button btnRezervacije;
         private System.Windows.Forms.Panel panelPonudeSubMenu;
         private System.Windows.Forms.Button btnListaPonuda;
         private System.Windows.Forms.Button btnNovaPonuda;
@@ -480,6 +457,7 @@
         private System.Windows.Forms.Button btnKorisnici;
         private System.Windows.Forms.Panel panelChildForm;
         private System.Windows.Forms.Button btnOdjava;
+        private System.Windows.Forms.Label label1;
     }
 }
 

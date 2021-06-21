@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eRent.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,26 +14,25 @@ namespace travelAworld.WinUI.Ponude
 {
     public partial class frmListaPonuda : Form
     {
-        private readonly APIService _getPonuda = new APIService("ponuda/getponude");
-        private readonly APIService _getDrzave = new APIService("ponuda/getdrzave");
+        private readonly APIService _getNekretnina = new APIService("nekretnina/GetNekretnina");
+        private readonly APIService _getGradovi = new APIService("nekretnina/GetGrad");
         private int index = 0;
         bool prikaziObrisanePonude = false;
         public frmListaPonuda()
         {
             InitializeComponent();
 
-            var drzave = _getDrzave.Get<List<LokacijaToDisplay>>(null);
-            drzave.Add(new LokacijaToDisplay { Drzava = "Bilo koja", LokacijaId = 0 });
+            var gradovi = _getGradovi.Get<List<GradToDisplayVM>>(null);
+            gradovi.Add(new GradToDisplayVM { Naziv = "Bilo koji", GradId = 0 });
 
-            pretragaDrzava.DisplayMember = "Drzava";
-            pretragaDrzava.ValueMember = "LokacijaId";
-            pretragaDrzava.DataSource = drzave;
+            pretragaGrad.DisplayMember = "Naziv";
+            pretragaGrad.ValueMember = "GradId";
+            pretragaGrad.DataSource = gradovi;
 
-            index = drzave.Count - 1;
+            index = gradovi.Count - 1;
 
-            pretragaDrzava.SelectedIndex = index;
+            pretragaGrad.SelectedIndex = index;
 
-            txtPageCounter.Text = 1.ToString();
 
             DataGridViewButtonColumn bcol = new DataGridViewButtonColumn();
             bcol.FlatStyle = FlatStyle.Flat;
@@ -53,49 +53,23 @@ namespace travelAworld.WinUI.Ponude
 
         private void pretragaPonuda(object sender, EventArgs e)
         {
-
-            PonudaToSearch queryParams = new PonudaToSearch
+            NekretninaToSearchVM queryParams = new NekretninaToSearchVM
             {
-               LokacijaId = Int32.Parse(pretragaDrzava.SelectedValue.ToString()),
-               Datum = pretragaDatum.Value,
-               PageNumber = Int32.Parse(txtPageCounter.Text),
-               PrikaziObrisane = prikaziObrisanePonude
+               GradId = Int32.Parse(pretragaGrad.SelectedValue.ToString()),
             };
 
-            var result = _getPonuda.Get<PageResult<PonudaToDisplay>>(queryParams);
+            var result = _getNekretnina.Get<List<NekretninaToDisplayVM>>(queryParams);
             
-
-            txtUkupno.Text = result.Count.ToString();
-
-            var totalPages = (int)Math.Ceiling((double)result.Count / 10);
-
-            btnPrevious.Enabled = true;
-            btnNext.Enabled = true;
-
-            if (txtPageCounter.Text == "1")
-            {
-                btnPrevious.Enabled = false;
-            }
-            if (txtPageCounter.Text == totalPages.ToString())
-            {
-                btnNext.Enabled = false;
-            }
-
-            dgvPonude.DataSource = result.Items;
-            dgvPonude.Columns["CijenaUkljuceno"].Visible = false;
-            dgvPonude.Columns["CijenaIskljuceno"].Visible = false;
+            dgvPonude.DataSource = result;
             dgvPonude.Columns["Opis"].Visible = false;
-            dgvPonude.Columns["Napomena"].Visible = false;
-            dgvPonude.Columns["DrzavaId"].Visible = false;
-            dgvPonude.Columns["Koordinate1"].Visible = false;
-            dgvPonude.Columns["Koordinate2"].Visible = false;
-            dgvPonude.Columns["_Drzava"].Visible = false;
-            dgvPonude.Columns["_Mjesto"].Visible = false;
-            dgvPonude.Columns["isActive"].Visible = false;
             dgvPonude.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvPonude.Columns["PonudaId"].HeaderText = "#ID";
-            dgvPonude.Columns["DatumPolaska"].HeaderText = "Datum polaska";
-            dgvPonude.Columns["DatumPovratka"].HeaderText = "Datum povratka";
+            dgvPonude.Columns["KategorijaNekretnina"].HeaderText = "Kategorija";
+            dgvPonude.Columns["PosjedujeLift"].HeaderText = "Lift";
+            dgvPonude.Columns["PosjedujeKlimu"].HeaderText = "Klima";
+            dgvPonude.Columns["UkljuceneRezije"].HeaderText = "Uključene režije";
+            dgvPonude.Columns["GodinaIzgradnje"].HeaderText = "Godina izgradnje";
+            dgvPonude.Columns["BrojEtaza"].HeaderText = "Br. etaža";
+            txtUkupno.Text = result.Count.ToString();
 
         }
 
@@ -111,7 +85,7 @@ namespace travelAworld.WinUI.Ponude
 
         private void btnPretragaPonisti_Click(object sender, EventArgs e)
         {
-            pretragaDrzava.SelectedIndex = index;
+            pretragaGrad.SelectedIndex = index;
         }
 
         private void dgvPonude_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -144,5 +118,6 @@ namespace travelAworld.WinUI.Ponude
             }
             pretragaPonuda(sender, e);
         }
+
     }
 }

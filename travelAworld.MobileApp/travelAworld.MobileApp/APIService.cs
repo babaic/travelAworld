@@ -16,8 +16,8 @@ namespace travelAworld.MobileApp
         private readonly string _route;
 
 #if DEBUG
-        private string _apiUrl = "https://travelaapi2.azurewebsites.net/api/";
-        //private string _apiUrl = "http://localhost:57818/api";
+        //private string _apiUrl = "https://travelaapi2.azurewebsites.net/api/";
+        private string _apiUrl = "http://192.168.0.15:45455/api";
 #endif
 #if RELEASE
         private string _apiUrl = "https://mywebsite.azure.com/api/";

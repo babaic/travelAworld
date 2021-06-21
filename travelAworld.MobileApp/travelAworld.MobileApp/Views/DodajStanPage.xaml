@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="travelAworld.MobileApp.Views.DodajStanPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="Naslov" Placeholder="Naslov"></Entry>
+            <Entry x:Name="Adresa" Placeholder="Adresa"></Entry>
+            <Entry x:Name="Velicina" Placeholder="Velicina"></Entry>
+            <Entry x:Name="Cijena" Placeholder="Cijena"></Entry>
+            <Entry x:Name="Slika" Placeholder="URL Slike"></Entry>
+            <Picker x:Name="pickerKategorija"
+        Title="Odaberi kategoriju">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Stan</x:String>
+                        <x:String>Kuca</x:String>
+                        <x:String>Vikendica</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Picker x:Name="pickerGrad"
+        Title="Odaberi grad">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Sarajevo</x:String>
+                        <x:String>Mostar</x:String>
+                        <x:String>Zenica</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Klima" Margin="4"></Label>
+                <CheckBox x:Name="Klima"/>
+                <Label Text="Lift" Margin="4"></Label>
+                <CheckBox x:Name="Lift"/>
+                <Label Text="Rezije" Margin="4"></Label>
+                <CheckBox x:Name="Rezije"/>
+                <Label Text="Grijanje" Margin="4"></Label>
+                <CheckBox x:Name="Grijanje"/>
+            </StackLayout>
+            
+            
+            <Button x:Name="btnDodaj" 
+                                        Grid.Row="0" Grid.Column="2"
+                                        Clicked="btnDodaj_Clicked_1"
+                                        Text="Dodaj"
+                                        BackgroundColor="#39E0A3"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using travelAworld.EF;
 
-namespace travelAworld.Migrations
+namespace eRent.Migrations
 {
     [DbContext(typeof(MyContext))]
     partial class MyContextModelSnapshot : ModelSnapshot
@@ -89,22 +89,22 @@ namespace travelAworld.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("travelAworld.Data.Drzava", b =>
+            modelBuilder.Entity("eRent.Data.Drzava", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DrzavaId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Naziv");
 
-                    b.HasKey("Id");
+                    b.HasKey("DrzavaId");
 
                     b.ToTable("Drzava");
                 });
 
-            modelBuilder.Entity("travelAworld.Data.Lokacija", b =>
+            modelBuilder.Entity("eRent.Data.Grad", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GradId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -112,150 +112,250 @@ namespace travelAworld.Migrations
 
                     b.Property<string>("Naziv");
 
-                    b.HasKey("Id");
+                    b.HasKey("GradId");
 
                     b.HasIndex("DrzavaId");
 
-                    b.ToTable("Lokacija");
+                    b.ToTable("Grad");
                 });
 
-            modelBuilder.Entity("travelAworld.Data.Obavijesti", b =>
+            modelBuilder.Entity("eRent.Data.KategorijaNekretnina", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("KategorijaNekretninaId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Datum");
-
-                    b.Property<int>("PonudaId");
-
-                    b.Property<string>("Tekst");
-
-                    b.Property<string>("Type");
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PonudaId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Obavijesti");
-                });
-
-            modelBuilder.Entity("travelAworld.Data.OtkazanaPonudaUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("CijenaPonude");
-
-                    b.Property<DateTime>("DatumOtkazivanja");
-
-                    b.Property<DateTime?>("DatumZavrsetkaDisputa");
-
-                    b.Property<double>("IznosPovrata");
-
-                    b.Property<int>("PonudaUserId");
-
-                    b.Property<int>("StatusDisputa");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PonudaUserId");
-
-                    b.ToTable("OtkazanaPonudaUser");
-                });
-
-            modelBuilder.Entity("travelAworld.Data.Ponuda", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("Cijena");
-
-                    b.Property<string>("CijenaIskljuceno");
-
-                    b.Property<string>("CijenaUkljuceno");
-
-                    b.Property<DateTime>("DatumObjave");
-
-                    b.Property<DateTime>("DatumPolaska");
-
-                    b.Property<DateTime>("DatumPovratka");
-
-                    b.Property<string>("Hotel");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<string>("Koordinata1");
-
-                    b.Property<string>("Koordinata2");
-
-                    b.Property<int>("LokacijaId");
-
-                    b.Property<string>("Napomena");
-
-                    b.Property<string>("Naslov");
+                    b.Property<string>("Naziv");
 
                     b.Property<string>("Opis");
 
-                    b.HasKey("Id");
+                    b.HasKey("KategorijaNekretninaId");
 
-                    b.HasIndex("LokacijaId");
-
-                    b.ToTable("Ponuda");
+                    b.ToTable("KategorijaNekretnina");
                 });
 
-            modelBuilder.Entity("travelAworld.Data.PonudaSlike", b =>
+            modelBuilder.Entity("eRent.Data.Nekretnina", b =>
+                {
+                    b.Property<int>("NekretninaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Adresa");
+
+                    b.Property<int>("BrojEtaza");
+
+                    b.Property<decimal>("Cijena");
+
+                    b.Property<int>("GodinaIzgradnje");
+
+                    b.Property<int>("GradId");
+
+                    b.Property<string>("Grijanje");
+
+                    b.Property<int>("KategorijaNekretninaId");
+
+                    b.Property<double>("Kvadratura");
+
+                    b.Property<string>("Naziv");
+
+                    b.Property<string>("Opis");
+
+                    b.Property<bool>("PosjedujeKlimu");
+
+                    b.Property<bool>("PosjedujeLift");
+
+                    b.Property<int>("Sprat");
+
+                    b.Property<bool>("UkljuceneRezije");
+
+                    b.Property<int?>("UserId");
+
+                    b.HasKey("NekretninaId");
+
+                    b.HasIndex("GradId");
+
+                    b.HasIndex("KategorijaNekretninaId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Nekretnina");
+                });
+
+            modelBuilder.Entity("eRent.Data.NekretninaSlike", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("PonudaId");
+                    b.Property<int>("NekretninaId");
 
                     b.Property<string>("SlikaUrl");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PonudaId");
+                    b.HasIndex("NekretninaId");
 
-                    b.ToTable("PonudaSlike");
+                    b.ToTable("NekretninaSlike");
                 });
 
-            modelBuilder.Entity("travelAworld.Data.PonudaUser", b =>
+            modelBuilder.Entity("eRent.Data.Notifikacija", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("NotifikacijaId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BrojOsoba");
+                    b.Property<DateTime>("DatumSlanja");
 
-                    b.Property<double>("Cijena");
+                    b.Property<string>("Naziv");
 
-                    b.Property<bool>("IsCanceled");
+                    b.Property<int?>("NovostId");
 
-                    b.Property<int>("PonudaId");
-
-                    b.Property<string>("TipSobe");
-
-                    b.Property<string>("TransakcijaId");
+                    b.Property<bool>("Status");
 
                     b.Property<int>("UserId");
 
-                    b.Property<DateTime>("VrijemePlacanja");
+                    b.HasKey("NotifikacijaId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("PonudaId");
+                    b.HasIndex("NovostId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PonudaUser");
+                    b.ToTable("Notifikacija");
+                });
+
+            modelBuilder.Entity("eRent.Data.Novost", b =>
+                {
+                    b.Property<int>("NovostId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Datum");
+
+                    b.Property<string>("Naziv");
+
+                    b.Property<string>("Opis");
+
+                    b.Property<byte[]>("Slika");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("NovostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Novost");
+                });
+
+            modelBuilder.Entity("eRent.Data.Ocjena", b =>
+                {
+                    b.Property<int>("OcjenaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Datum");
+
+                    b.Property<int>("NekretninaId");
+
+                    b.Property<int>("UserId");
+
+                    b.Property<int>("Vrijednost");
+
+                    b.HasKey("OcjenaId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Ocjena");
+                });
+
+            modelBuilder.Entity("eRent.Data.Pretplata", b =>
+                {
+                    b.Property<int>("PretplataId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Datum");
+
+                    b.Property<int?>("KategorijaNekretninaId");
+
+                    b.Property<int>("KategorijaNekretnineId");
+
+                    b.Property<bool>("Status");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("PretplataId");
+
+                    b.HasIndex("KategorijaNekretninaId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Pretplata");
+                });
+
+            modelBuilder.Entity("eRent.Data.Rezervacija", b =>
+                {
+                    b.Property<int>("RezervacijaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DatumKreiranjaRezervacije");
+
+                    b.Property<DateTime>("DatumObilaska");
+
+                    b.Property<DateTime>("DatumPrijave");
+
+                    b.Property<string>("Napomena");
+
+                    b.Property<int>("NekretninaId");
+
+                    b.Property<string>("Status");
+
+                    b.Property<int>("UserId");
+
+                    b.Property<string>("VrijemeOdjave");
+
+                    b.Property<string>("VrijemePrijave");
+
+                    b.Property<int?>("ZaposlenikId");
+
+                    b.HasKey("RezervacijaId");
+
+                    b.HasIndex("NekretninaId");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("ZaposlenikId");
+
+                    b.ToTable("Rezervacija");
+                });
+
+            modelBuilder.Entity("eRent.Data.Ugovor", b =>
+                {
+                    b.Property<int>("UgovorId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Cijena");
+
+                    b.Property<int>("KlijentId");
+
+                    b.Property<int>("KorisnikId");
+
+                    b.Property<DateTime>("KrajKoristenja");
+
+                    b.Property<int>("NekretninaId");
+
+                    b.Property<DateTime>("PocetakKoristenja");
+
+                    b.HasKey("UgovorId");
+
+                    b.HasIndex("KlijentId");
+
+                    b.HasIndex("KorisnikId");
+
+                    b.HasIndex("NekretninaId");
+
+                    b.ToTable("Ugovor");
                 });
 
             modelBuilder.Entity("travelAworld.Data.Role", b =>
@@ -358,50 +458,6 @@ namespace travelAworld.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("travelAworld.Data.UserSearch", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DatumPretrage");
-
-                    b.Property<int>("UserId");
-
-                    b.Property<float>("rCijena");
-
-                    b.Property<string>("rDrzava");
-
-                    b.Property<DateTime>("rMjesec");
-
-                    b.Property<string>("rMjesto");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserSearch");
-                });
-
-            modelBuilder.Entity("travelAworld.Data.VodicPonuda", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("PonudaId");
-
-                    b.Property<int>("VodicId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PonudaId");
-
-                    b.HasIndex("VodicId");
-
-                    b.ToTable("VodicPonuda");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("travelAworld.Data.Role")
@@ -434,20 +490,44 @@ namespace travelAworld.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("travelAworld.Data.Lokacija", b =>
+            modelBuilder.Entity("eRent.Data.Grad", b =>
                 {
-                    b.HasOne("travelAworld.Data.Drzava", "Drzava")
+                    b.HasOne("eRent.Data.Drzava", "Drzava")
                         .WithMany()
                         .HasForeignKey("DrzavaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("travelAworld.Data.Obavijesti", b =>
+            modelBuilder.Entity("eRent.Data.Nekretnina", b =>
                 {
-                    b.HasOne("travelAworld.Data.Ponuda", "Ponuda")
+                    b.HasOne("eRent.Data.Grad", "Grad")
                         .WithMany()
-                        .HasForeignKey("PonudaId")
+                        .HasForeignKey("GradId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("eRent.Data.KategorijaNekretnina", "KategorijaNekretnina")
+                        .WithMany()
+                        .HasForeignKey("KategorijaNekretninaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("travelAworld.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("eRent.Data.NekretninaSlike", b =>
+                {
+                    b.HasOne("eRent.Data.Nekretnina", "Nekretnina")
+                        .WithMany()
+                        .HasForeignKey("NekretninaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("eRent.Data.Notifikacija", b =>
+                {
+                    b.HasOne("eRent.Data.Novost", "Novost")
+                        .WithMany()
+                        .HasForeignKey("NovostId");
 
                     b.HasOne("travelAworld.Data.User", "User")
                         .WithMany()
@@ -455,40 +535,66 @@ namespace travelAworld.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("travelAworld.Data.OtkazanaPonudaUser", b =>
+            modelBuilder.Entity("eRent.Data.Novost", b =>
                 {
-                    b.HasOne("travelAworld.Data.PonudaUser", "PonudaUser")
+                    b.HasOne("travelAworld.Data.User", "User")
                         .WithMany()
-                        .HasForeignKey("PonudaUserId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("travelAworld.Data.Ponuda", b =>
+            modelBuilder.Entity("eRent.Data.Ocjena", b =>
                 {
-                    b.HasOne("travelAworld.Data.Lokacija", "Lokacija")
+                    b.HasOne("travelAworld.Data.User", "User")
                         .WithMany()
-                        .HasForeignKey("LokacijaId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("travelAworld.Data.PonudaSlike", b =>
+            modelBuilder.Entity("eRent.Data.Pretplata", b =>
                 {
-                    b.HasOne("travelAworld.Data.Ponuda", "Ponuda")
+                    b.HasOne("eRent.Data.KategorijaNekretnina", "KategorijaNekretnina")
                         .WithMany()
-                        .HasForeignKey("PonudaId")
+                        .HasForeignKey("KategorijaNekretninaId");
+
+                    b.HasOne("travelAworld.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("travelAworld.Data.PonudaUser", b =>
+            modelBuilder.Entity("eRent.Data.Rezervacija", b =>
                 {
-                    b.HasOne("travelAworld.Data.Ponuda", "Ponuda")
+                    b.HasOne("eRent.Data.Nekretnina", "Nekretnina")
                         .WithMany()
-                        .HasForeignKey("PonudaId")
+                        .HasForeignKey("NekretninaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("travelAworld.Data.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("travelAworld.Data.User", "Zaposlenik")
+                        .WithMany()
+                        .HasForeignKey("ZaposlenikId");
+                });
+
+            modelBuilder.Entity("eRent.Data.Ugovor", b =>
+                {
+                    b.HasOne("travelAworld.Data.User", "Klijent")
+                        .WithMany()
+                        .HasForeignKey("KlijentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("travelAworld.Data.User", "Korisnik")
+                        .WithMany()
+                        .HasForeignKey("KorisnikId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("eRent.Data.Nekretnina", "Nekretnina")
+                        .WithMany()
+                        .HasForeignKey("NekretninaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -502,27 +608,6 @@ namespace travelAworld.Migrations
                     b.HasOne("travelAworld.Data.User", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("travelAworld.Data.UserSearch", b =>
-                {
-                    b.HasOne("travelAworld.Data.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("travelAworld.Data.VodicPonuda", b =>
-                {
-                    b.HasOne("travelAworld.Data.Ponuda", "Ponuda")
-                        .WithMany()
-                        .HasForeignKey("PonudaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("travelAworld.Data.User", "Vodic")
-                        .WithMany()
-                        .HasForeignKey("VodicId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

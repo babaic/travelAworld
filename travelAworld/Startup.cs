@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using eRent.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,7 +48,7 @@ namespace travelAworld
             builder.AddRoleManager<RoleManager<Role>>();
             builder.AddSignInManager<SignInManager<User>>();
 
-            services.AddDbContext<MyContext>(x => x.UseSqlServer(Configuration.GetConnectionString("azureBaza")));
+            services.AddDbContext<MyContext>(x => x.UseSqlServer(Configuration.GetConnectionString("lokalnaBaza")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             
@@ -65,7 +66,7 @@ namespace travelAworld
                 });
 
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IPonudaService, PonudaService>();
+            services.AddScoped<INekretninaService, NekretninaService>();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eRent.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -11,9 +12,9 @@ namespace travelAworld.MobileApp.ViewModels
 {
     public class PonudeViewModel : BaseViewModel
     {
-        private readonly APIService _service = new APIService("ponuda/getponude");
-        public ObservableCollection<PonudaToDisplay> Ponude { get; set; } = new ObservableCollection<PonudaToDisplay>();
-        PonudaToDisplay ponuda1 = new PonudaToDisplay();
+        private readonly APIService _service = new APIService("nekretnina/GetNekretnina");
+        public ObservableCollection<NekretninaToDisplayVM> Ponude { get; set; } = new ObservableCollection<NekretninaToDisplayVM>();
+        NekretninaToDisplayVM ponuda1 = new NekretninaToDisplayVM();
         public PonudeViewModel()
         {
             
@@ -25,9 +26,9 @@ namespace travelAworld.MobileApp.ViewModels
         {
             Ponude.Clear();
             PonudaToSearch ps = new PonudaToSearch { PrikaziObrisane = false };
-            PageResult<PonudaToDisplay> ponude = _service.Get<PageResult<PonudaToDisplay>>(ps);
+            List<NekretninaToDisplayVM> ponude = _service.Get<List<NekretninaToDisplayVM>>(null);
 
-            foreach (var ponuda in ponude.Items)
+            foreach (var ponuda in ponude)
             {
                 Ponude.Add(ponuda);
             }

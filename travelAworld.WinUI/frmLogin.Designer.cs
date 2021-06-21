@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.ispis = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.errorBox = new System.Windows.Forms.Panel();
@@ -42,7 +42,6 @@
             this.txtLoginUsername = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.errorBox.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -51,23 +50,22 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(831, 179);
             this.panel1.TabIndex = 0;
             // 
-            // pictureBox1
+            // label2
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::travelAworld.WinUI.Properties.Resources._219f16ad_2853_479d_9f16_d28c202d7006_200x200;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(831, 179);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(355, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 37);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "eRent";
             // 
             // ispis
             // 
@@ -144,7 +142,7 @@
             this.txtLoginPassword.PasswordChar = '*';
             this.txtLoginPassword.Size = new System.Drawing.Size(232, 22);
             this.txtLoginPassword.TabIndex = 12;
-            this.txtLoginPassword.Text = "test";
+            this.txtLoginPassword.Text = "123456a";
             // 
             // txtLoginUser
             // 
@@ -172,12 +170,12 @@
             this.txtLoginUsername.Name = "txtLoginUsername";
             this.txtLoginUsername.Size = new System.Drawing.Size(232, 22);
             this.txtLoginUsername.TabIndex = 9;
-            this.txtLoginUsername.Text = "administrator";
+            this.txtLoginUsername.Text = "admin";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Image = global::travelAworld.WinUI.Properties.Resources._92e943_394c3a43edad47d291612c56954ca377_mv2_d_2800_1439_s_2__1_;
+            this.pictureBox2.Image = global::travelAworld.WinUI.Properties.Resources.o_sarajevu1;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(831, 472);
@@ -195,8 +193,9 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
+            this.Load += new System.EventHandler(this.frmLogin_Load_1);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.errorBox.ResumeLayout(false);
             this.errorBox.PerformLayout();
@@ -210,7 +209,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel3;
@@ -222,5 +220,6 @@
         private System.Windows.Forms.TextBox txtLoginUsername;
         private System.Windows.Forms.Label ispis;
         private System.Windows.Forms.Panel errorBox;
+        private System.Windows.Forms.Label label2;
     }
 }

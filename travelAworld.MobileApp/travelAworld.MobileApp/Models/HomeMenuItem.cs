@@ -14,7 +14,9 @@ namespace travelAworld.MobileApp.Models
         MojaPutovanja,
         MojaPutovanjaUser,
         Postavke,
-        Logout
+        DodajStan,
+        Logout,
+        RezervacijeZahtjevi
     }
     public class HomeMenuItem
     {

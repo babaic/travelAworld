@@ -11,8 +11,6 @@ namespace travelAworld.Services
         UsertoDisplay GetUserById(int id);
         List<RoleToDisplay> GetRoles(int userId);
         Task UpdateRole(int userId, string roleName);
-        RezervacijaInfo GetRezervacijaInfo(int ponudaUserId);
-        List<UsertoDisplay> GetUsersFromTrip(int ponudaId);
-        List<PutovanjeRezervacijaToDisplay> GetPutovanjeAndRezervacijeFromUser(SearchUser userId);
+        bool CanDeleteUser(int userId);
     }
 }

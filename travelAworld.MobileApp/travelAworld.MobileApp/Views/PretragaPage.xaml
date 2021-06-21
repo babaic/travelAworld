@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="travelAworld.MobileApp.Views.PretragaPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Pretraga nekretnina"/>
+            <Picker x:Name="pickerKategorija"
+        Title="Odaberi kategoriju">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Apartman</x:String>
+                        <x:String>Kuća</x:String>
+                        <x:String>Vikendica</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Picker x:Name="pickerGrad"
+        Title="Odaberi grad">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Sarajevo</x:String>
+                        <x:String>Mostar</x:String>
+                        <x:String>Zenica</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Entry x:Name="CijenaDo" Placeholder="Cijena do"></Entry>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnPretraga" 
+                                        Grid.Row="0" Grid.Column="2"
+                                        Clicked="btnPretraga_Clicked"
+                                        Text="Pretraga"
+                                        BackgroundColor="#39E0A3"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Center"/>
+                <Button x:Name="btnPonisti" 
+                                        Grid.Row="0" Grid.Column="2"
+                                        Clicked="btnPonisti_Clicked"
+                                        Text="Poništi"
+                                        BackgroundColor="DarkRed"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Center"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

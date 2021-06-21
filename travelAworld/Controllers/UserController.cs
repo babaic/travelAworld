@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using eRent.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -27,13 +28,15 @@ namespace travelAworld.Controllers
         private readonly IUserService _userService;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly RoleManager<Role> _roleManager;
 
-        public UserController(IConfiguration config, IUserService userService, UserManager<User> userManager, SignInManager<User> signInManager)
+        public UserController(IConfiguration config, IUserService userService, UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<Role> roleManager)
         {
             _config = config;
             _userService = userService;
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         [AllowAnonymous]
@@ -71,7 +74,6 @@ namespace travelAworld.Controllers
 
 
             return Ok(createdUser);
-
         }
 
         [AllowAnonymous]
@@ -152,7 +154,7 @@ namespace travelAworld.Controllers
             return tokenHandler.WriteToken(token);
         }
 
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         [HttpGet]
         public IActionResult GetUsers([FromQuery] UserToSearch queryParams)
         {
@@ -167,13 +169,6 @@ namespace travelAworld.Controllers
             var user = _userService.GetUserById(id);
 
             return Ok(user);
-        }
-
-        [AllowAnonymous]
-        [HttpGet("getusersfromtrip")]
-        public IActionResult GetUsersFromTrip(int id)
-        {
-            return Ok(_userService.GetUsersFromTrip(id));
         }
 
 
@@ -218,17 +213,27 @@ namespace travelAworld.Controllers
 
             return Ok();
         }
-        //[AllowAnonymous]
-        [HttpGet("getrezervacijainfo/{id}")]
-        public IActionResult GetRezervacijaInfo(int id)
+        [AllowAnonymous]
+        [HttpPost("deleteUser")]
+        public async Task<bool> DeleteUserAsync([FromBody]int id)
         {
-            return Ok(_userService.GetRezervacijaInfo(id));
-        }
+            if (!_userService.CanDeleteUser(id))
+            {
+                return false;
+            }
+            else
+            {
+                var user = await _userManager.FindByIdAsync(id.ToString());
+                await _userManager.DeleteAsync(user);
+            }
 
-        [HttpGet("putovanjauser")]
-        public IActionResult GetPutovanjeAndRezervacijeFromUser([FromQuery]SearchUser userId)
+            return true;
+        }
+        [AllowAnonymous]
+        [HttpPost("sendEmail")]
+        public void SendEmail(string to, string content)
         {
-            return Ok(_userService.GetPutovanjeAndRezervacijeFromUser(userId));
+            Email.SendEmail(new Email.EmailParameters(to, content));
         }
     }
 }

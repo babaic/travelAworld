@@ -61,6 +61,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1183, 60);
             this.panel1.TabIndex = 16;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label5
             // 
@@ -71,7 +72,7 @@
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
             this.label5.Location = new System.Drawing.Point(50, 13);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 22);
+            this.label5.Size = new System.Drawing.Size(95, 20);
             this.label5.TabIndex = 1;
             this.label5.Text = "Rezervacije";
             // 
@@ -92,7 +93,7 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.label1.Location = new System.Drawing.Point(12, 82);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 22);
+            this.label1.Size = new System.Drawing.Size(66, 20);
             this.label1.TabIndex = 37;
             this.label1.Text = "Ponuda";
             // 
@@ -153,7 +154,7 @@
             this.txtUkupno.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.txtUkupno.Location = new System.Drawing.Point(104, 718);
             this.txtUkupno.Name = "txtUkupno";
-            this.txtUkupno.Size = new System.Drawing.Size(0, 22);
+            this.txtUkupno.Size = new System.Drawing.Size(0, 20);
             this.txtUkupno.TabIndex = 43;
             // 
             // label4
@@ -162,7 +163,7 @@
             this.label4.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.label4.Location = new System.Drawing.Point(12, 718);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 22);
+            this.label4.Size = new System.Drawing.Size(70, 20);
             this.label4.TabIndex = 42;
             this.label4.Text = "Ukupno:";
             // 
@@ -172,7 +173,7 @@
             this.txtPageCounter.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.txtPageCounter.Location = new System.Drawing.Point(964, 718);
             this.txtPageCounter.Name = "txtPageCounter";
-            this.txtPageCounter.Size = new System.Drawing.Size(21, 22);
+            this.txtPageCounter.Size = new System.Drawing.Size(17, 20);
             this.txtPageCounter.TabIndex = 41;
             this.txtPageCounter.Text = "1";
             // 
@@ -182,7 +183,7 @@
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.label3.Location = new System.Drawing.Point(868, 718);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 22);
+            this.label3.Size = new System.Drawing.Size(72, 20);
             this.label3.TabIndex = 40;
             this.label3.Text = "Stranica:";
             // 
@@ -220,7 +221,7 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10.8F);
             this.label2.Location = new System.Drawing.Point(465, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 22);
+            this.label2.Size = new System.Drawing.Size(149, 20);
             this.label2.TabIndex = 47;
             this.label2.Text = "Mjesec rezervacije";
             // 

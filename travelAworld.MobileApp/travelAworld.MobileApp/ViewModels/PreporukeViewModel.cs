@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eRent.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -11,9 +12,8 @@ namespace travelAworld.MobileApp.ViewModels
 {
     public class PreporukeViewModel : BaseViewModel
     {
-        private readonly APIService _service = new APIService("ponuda/preporuke");
-        public ObservableCollection<PonudaToDisplay> Ponude { get; set; } = new ObservableCollection<PonudaToDisplay>();
-        PonudaToDisplay ponuda1 = new PonudaToDisplay();
+        private readonly APIService _service = new APIService("nekretnina/preporuke");
+        public ObservableCollection<NekretninaToDisplayVM> Ponude { get; set; } = new ObservableCollection<NekretninaToDisplayVM>();
         public PreporukeViewModel()
         {
             
@@ -24,7 +24,7 @@ namespace travelAworld.MobileApp.ViewModels
         public void UcitajPonude()
         {
             Ponude.Clear();
-            List<PonudaToDisplay> ponude = _service.Get<List<PonudaToDisplay>>(null);
+            List<NekretninaToDisplayVM> ponude = _service.Get<List<NekretninaToDisplayVM>>(null);
 
             foreach (var ponuda in ponude)
             {
